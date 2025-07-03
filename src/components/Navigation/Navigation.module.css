@@ -1,0 +1,25 @@
+/* .header {
+  background-color: #1e2023;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+} */
+
+/* .container {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+} */
+
+.link {
+  color: white;
+  font-size: 30px;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  &:active {
+    color: #14c57c;
+  }
+}
+
+.active {
+  color: #14c57c;
+}

@@ -1,0 +1,21 @@
+.button {
+  border: none;
+}
+
+.default {
+}
+
+.search {
+  position: absolute;
+  right: 14px;
+  transition: color 0.3s ease;
+  &:hover {
+    color: var(--hover);
+  }
+}
+
+@media (min-width: 768px) {
+  .search {
+    display: none;
+  }
+}

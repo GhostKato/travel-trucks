@@ -1,12 +1,11 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import TrucksCatalogPage from "./pages/TrucksCatalogPage/TrucksCatalogPage";
-import { TrucksDetailsPage } from "./pages/TrucksDetailsPage/TrucksDetailsPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import TrucksFeatures from "./components/TrucksFeatures/TrucksFeatures";
-import TrucksReviews from "./components/TrucksReviews/TrucksReviews";
-import "./App.css";
-import Layout from "./components/Layout/Layout";
+import HomePage from "../../pages/HomePage/HomePage";
+import TrucksCatalogPage from "../../pages/TrucksCatalogPage/TrucksCatalogPage";
+import { TrucksDetailsPage } from "../../pages/TrucksDetailsPage/TrucksDetailsPage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import TrucksFeatures from "../TrucksFeatures/TrucksFeatures";
+import TrucksReviews from "../TrucksReviews/TrucksReviews";
+import Layout from "../Layout/Layout";
 
 function App() {
   return (

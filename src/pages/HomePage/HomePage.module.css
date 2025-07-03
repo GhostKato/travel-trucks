@@ -1,0 +1,63 @@
+.container {
+  height: 92vh;
+  background-image: url(../../img/5-Advertisement/advertisemenMob.png);
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 1024px) {
+  .container {
+    background-image: url(../../img/heroMob.jpg);
+  }
+}
+.container {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    ),
+    url(../../img/heroMob.webp);
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .container {
+    background-image: url(../../img/heroMob@2x.webp);
+  }
+}
+@media screen and (min-width: 768px) {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 1024px) {
+    .container {
+      background-image: url(../../img/heroTab.jpg);
+    }
+  }
+  .container {
+    background-image: url(../../img/heroTab.webp);
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .containercontent {
+      background-image: url(../../img/heroTab@2x.webp);
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 1024px) {
+    .container {
+      background-image: url(../../img/heroDes.jpg);
+    }
+  }
+  .container {
+    background-image: url(../../img/heroDes.webp);
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .container {
+      background-image: url(../../img/heroDes@2x.webp);
+    }
+  }
+}

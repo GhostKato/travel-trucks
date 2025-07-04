@@ -1,11 +1,11 @@
 .button {
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.default {
-}
-
-.search {
+.header {
   position: absolute;
   right: 14px;
   transition: color 0.3s ease;
@@ -14,8 +14,22 @@
   }
 }
 
+.home {
+  background-color: var(--button);
+  color: var(--text-white);
+  padding: 16px 48px;
+  border-radius: 200px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.08px;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
 @media (min-width: 768px) {
-  .search {
+  .header {
     display: none;
   }
 }

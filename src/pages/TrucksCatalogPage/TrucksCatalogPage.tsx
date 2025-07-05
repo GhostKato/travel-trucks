@@ -4,6 +4,7 @@ import type { AppDispatch } from '../../redux/store';
 import { fetchTrucks } from '../../redux/trucks/operations';
 import { selectError, selectIsLoading } from '../../redux/trucks/selectors';
 import TrucksList from '../../components/TrucksList/TrucksList';
+import s from './TrucksCatalogPage.module.css'
 
 const TrucksCatalogPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch(); 
@@ -15,7 +16,7 @@ const TrucksCatalogPage: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={s.container}>
        <TrucksList/>
     </div>
   );

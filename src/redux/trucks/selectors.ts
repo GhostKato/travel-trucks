@@ -1,6 +1,7 @@
 import type { RootState } from "../store";
 
-export const selectTrucks = (state: RootState) => state.trucks.trucks;  // тепер це масив
-export const selectTruck = (state: RootState) => state.trucks.truck;
+export const selectTrucks = (state: RootState) => state.trucks.trucks;
+export const selectTotal = (state: RootState) => state.trucks.total;
+export const selectSelectedTruck = (state: RootState) => state.trucks.selectedTruck;
 export const selectIsLoading = (state: RootState) => state.trucks.isLoading;
 export const selectError = (state: RootState) => state.trucks.error;

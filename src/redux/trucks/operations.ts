@@ -2,16 +2,25 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { campersApi } from "../../config/campersApi";
 import type { Truck } from "../../types/types";
 
+type TrucksApiResponse = {
+  items: Truck[];
+  total: number;
+};
+
 export const fetchTrucks = createAsyncThunk<
-  Truck[],   // масив
+  { items: Truck[]; total: number },
   void,
   { rejectValue: string }
 >(
   "trucks/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const { data } = await campersApi.get<Truck[]>("/campers");
-      return data;
+      const { data } = await campersApi.get<TrucksApiResponse>("/campers");      
+
+      return {
+        items: data.items,
+        total: data.total,
+      };
     } catch (error: unknown) {
       if (error instanceof Error) {
         return thunkAPI.rejectWithValue(error.message);

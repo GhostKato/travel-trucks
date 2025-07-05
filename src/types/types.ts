@@ -17,9 +17,10 @@ export type Truck = {
 }
 
 export type TrucksState = {
-  trucks: Truck[];         // просто масив
-  truck: Truck | null;
+  trucks: Truck[];
+  total: number;
+  selectedTruck: Truck | null;
   isLoading: boolean;
-  isError: boolean | null;
   error: string | null;
 };
+

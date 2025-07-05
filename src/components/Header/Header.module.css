@@ -11,7 +11,7 @@
 
 .logo {
   width: 200px;
-  height: auto; /* зберігає пропорції */
+  height: auto;
 }
 
 .container {

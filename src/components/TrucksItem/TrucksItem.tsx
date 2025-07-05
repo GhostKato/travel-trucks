@@ -1,4 +1,3 @@
-// TrucksItem.tsx
 import React from 'react';
 import type { Truck } from '../../types/types';
 import s from './TrucksItem.module.css';

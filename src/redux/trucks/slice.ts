@@ -1,53 +1,52 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchTrucks, fetchTruckDetails } from "./operations";
-import type { Truck, TrucksState } from "../../types/types";
+import type { TrucksState } from "../../types/types";
 
 const initialState: TrucksState = {
-  trucks: [],          // масив
-  truck: null,
+  trucks: [],
+  total: 0,
+  selectedTruck: null,
   isLoading: false,
-  isError: null,
   error: null,
 };
 
-const trucksSlice = createSlice({
+export const trucksSlice = createSlice({
   name: "trucks",
   initialState,
   reducers: {
-    clearTruck(state) {
-      state.truck = null;
+    clearSelectedTruck(state) {
+      state.selectedTruck = null;
     },
   },
   extraReducers: (builder) => {
-    builder
+    builder      
       .addCase(fetchTrucks.pending, (state) => {
         state.isLoading = true;
-        state.isError = null;
+        state.error = null;
       })
-      .addCase(fetchTrucks.fulfilled, (state, action: PayloadAction<Truck[]>) => {
-        state.trucks = action.payload;   // масив
+      .addCase(fetchTrucks.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.trucks = action.payload.items;
+        state.total = action.payload.total;
       })
       .addCase(fetchTrucks.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
-        state.error = action.payload || "Error fetching trucks";
-      })
+        state.error = action.payload ?? "Failed to fetch trucks";
+      })      
       .addCase(fetchTruckDetails.pending, (state) => {
         state.isLoading = true;
-        state.isError = null;
+        state.error = null;
       })
-      .addCase(fetchTruckDetails.fulfilled, (state, action: PayloadAction<Truck>) => {
-        state.truck = action.payload;
+      .addCase(fetchTruckDetails.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.selectedTruck = action.payload;
       })
       .addCase(fetchTruckDetails.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
-        state.error = action.payload || "Error fetching truck details";
+        state.error = action.payload ?? "Failed to fetch truck details";
       });
   },
 });
 
-export const { clearTruck } = trucksSlice.actions;
-export const trucksReducer = trucksSlice.reducer;
+export const { clearSelectedTruck } = trucksSlice.actions;
+export default trucksSlice.reducer;

@@ -1,12 +1,11 @@
 .list {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 @media (min-width: 1024px) {
   .list {
-    gap: 32px;
+    max-width: 700px;
   }
 }

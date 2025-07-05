@@ -3,7 +3,12 @@ export type Review = {
   comment: string;
   rating: number;
   user: string;
-}
+};
+
+export type GalleryItem = {
+  original: string;
+  thumb: string;
+};
 
 export type Truck = {
   id: string;
@@ -12,9 +17,9 @@ export type Truck = {
   reviews: Review[];
   location: string;
   price: number;
-  gallery: string[];
+  gallery: GalleryItem[];
   description: string;
-}
+};
 
 export type TrucksState = {
   trucks: Truck[];
@@ -23,4 +28,3 @@ export type TrucksState = {
   isLoading: boolean;
   error: string | null;
 };
-

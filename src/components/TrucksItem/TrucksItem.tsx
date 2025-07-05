@@ -1,16 +1,48 @@
 import React from 'react';
 import type { Truck } from '../../types/types';
 import s from './TrucksItem.module.css';
+import EquipmentList from '../EquipmentList/EquipmentList';
+import Button from '../Button/Button';
 
 interface TrucksItemProps {
   truck: Truck;
 }
 
-const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => {
+const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => { 
+
   return (
     <li className={s.item}>
-      <h3>{truck.name}</h3>
-      <p>{truck.description}</p>
+      <div className={s.imgContainer}>
+      <img className={s.img} src={truck.gallery[0].thumb} alt={`Кемпер ${truck.name}`}/>
+      </div>
+     <div className={s.con}>
+        <div className={s.namePrice}>
+          <h3>{truck.name}</h3>
+          <h3>{`€ ${truck.price.toFixed(2)}`} <svg className={s.iconHeart} width="18" height="18" fill="currentColor">
+        <use href="/sprite.svg#icon-heart" />
+                </svg></h3>
+        </div>       
+         <div className={s.descriptionCont}>
+            <ul className={s.ratingLoc}>
+              <li>
+              <svg className={s.iconStar} width="18" height="18" fill="currentColor">
+        <use href="/sprite.svg#icon-star" />
+                </svg> {`${truck.rating}(${truck.reviews.length}Revievs)`}
+            </li>
+            <li>
+                <svg width="18" height="18" fill="currentColor">
+        <use href="/sprite.svg#icon-map" />
+                </svg> {truck.location}
+              </li>
+          </ul>
+          <p className={s.description}>{truck.description}</p>
+          <EquipmentList truck={truck} />
+          <Button className="show">
+        Show more
+      </Button> 
+          
+         </div>
+     </div>
     </li>
   );
 };

@@ -1,0 +1,11 @@
+.item {
+  background-color: var(--background);
+  padding: 5px 10px;
+  border-radius: 100px;
+}
+
+@media (min-width: 768px) {
+  .item {
+    padding: 12px 18px;
+  }
+}

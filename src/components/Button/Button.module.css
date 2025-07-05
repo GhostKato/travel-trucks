@@ -28,8 +28,37 @@
   }
 }
 
+.show {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  background-color: var(--button);
+  /* padding: 16px 40px; */
+  width: 140px;
+  height: 50px;
+  border-radius: 200px;
+  color: var(--text-white);
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
 @media (min-width: 768px) {
+  .show {
+    width: 166px;
+    height: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
   .header {
     display: none;
+  }
+
+  .show {
+    position: static;
+    left: none;
+    transform: none;
   }
 }

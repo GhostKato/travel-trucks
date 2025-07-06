@@ -9,7 +9,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --background: #f2f4f7;
+  --background-light: #f2f4f7;
+  --background-dark: #dadde1;
   --text-white: #ffffff;
   --text-dark: #101828;
   --text-light: #475467;
@@ -17,8 +18,8 @@
   --text-placeholder: #6c717b;
   --border: #dadde1;
   --button: #e44848;
-  --hover: #d84343;
-  --star: #bead21;
+  --hover: #a73232;
+  --star: #f4dd09;
 }
 
 body {

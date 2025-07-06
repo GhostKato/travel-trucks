@@ -19,7 +19,14 @@ export type Truck = {
   price: number;
   gallery: GalleryItem[];
   description: string;
+  form: string;          
+  length: string;       
+  width: string;         
+  height: string;        
+  tank: string;          
+  consumption: string;   
 };
+
 
 export type TrucksState = {
   trucks: Truck[];

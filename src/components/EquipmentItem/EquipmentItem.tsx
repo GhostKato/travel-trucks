@@ -3,7 +3,7 @@ import type { Truck } from '../../types';
 import { equipmentData } from '../../constants';
 import s from './EquipmentItem.module.css';
 
-interface EquipmentItemProps {
+type EquipmentItemProps = {
   truck: Truck;
 }
 

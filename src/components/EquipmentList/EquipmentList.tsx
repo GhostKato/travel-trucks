@@ -5,23 +5,26 @@ import s from './EquipmentList.module.css'
 import EquipmentItem from '../EquipmentItem/EquipmentItem'
 import { selectIsLoading } from '../../redux/trucks/selectors';
 
-interface TrucksItemProps {
-  truck: Truck;
+type EquipmentListProps = {
+  truck?: Truck | null;
 }
 
-const EquipmentList: React.FC<TrucksItemProps> = ({ truck }) => {
-    
-    const isLoading = useSelector(selectIsLoading);
-    
-    if (isLoading) {
-        return <div className={s.loading}>Loading Equipments...</div>;
-      }        
-    
-  return (
-    <ul className={s.list}>      
-          <EquipmentItem truck={truck}/>        
-        </ul>
-      );
-    };
+const EquipmentList: React.FC<EquipmentListProps> = ({ truck }) => {
+  const isLoading = useSelector(selectIsLoading);
 
-export default EquipmentList
+  if (isLoading) {
+    return <div className={s.loading}>Loading Equipments...</div>;
+  }
+
+  if (!truck) {
+    return <div className={s.loading}>No truck selected</div>;
+  }
+
+  return (
+    <ul className={s.list}>
+      <EquipmentItem truck={truck} />
+    </ul>
+  );
+};
+
+export default EquipmentList;

@@ -2,7 +2,7 @@ import React from "react";
 import s from "./RatingLocation.module.css";
 import type { Truck } from "../../types";
 
-interface RatingLocationProps {
+type RatingLocationProps = {
   truck: Truck;
 }
 

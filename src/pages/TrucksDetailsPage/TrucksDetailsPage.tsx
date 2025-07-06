@@ -42,6 +42,8 @@ export const TrucksDetailsPage: React.FC = () => {
     </li>
   ))}
 </ul>
+      
+<p className={s.description}>{truck?.description}</p>
 
       <nav className={s.nav}>
         <NavLink to="features" className={buildLinkClass}>
@@ -53,7 +55,7 @@ export const TrucksDetailsPage: React.FC = () => {
         </NavLink>
       </nav>
 
-      <hr className={s.separator} />
+      
       <Outlet />
     </div>
   );

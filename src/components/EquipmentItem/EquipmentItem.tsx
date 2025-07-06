@@ -33,7 +33,7 @@ const EquipmentItem: React.FC<EquipmentItemProps> = ({ truck }) => {
               <svg width="16" height="16" fill="currentColor">
                 <use href={`/sprite.svg#${icon}`} />
               </svg>
-              {value}
+               {value}
             </li>
           );
         }

@@ -27,6 +27,13 @@
   padding-bottom: 8px;
 }
 
+.priceCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
 .descriptionCont {
   display: flex;
   flex-direction: column;

@@ -26,9 +26,12 @@ const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => {
      <div className={s.con}>
         <div className={s.namePrice}>
           <h3>{truck.name}</h3>
-          <h3>{`€ ${truck.price.toFixed(2)}`} <svg className={s.iconHeart} width="18" height="18" fill="currentColor">
-        <use href="/sprite.svg#icon-heart" />
-                </svg></h3>
+          <div className={s.priceCont}>
+            <h3>{`€ ${truck.price.toFixed(2)}`} </h3>
+            <svg className={s.iconHeart} width="25" height="24" fill="currentColor">
+          <use href="/sprite.svg#icon-heart" />
+                  </svg>
+          </div>
         </div>       
         <div className={s.descriptionCont}>
           

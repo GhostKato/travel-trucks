@@ -1,4 +1,4 @@
-export const equipmentConfig: Record<
+export const equipmentData: Record<
   string,
   { icon: string; label: string; type: 'boolean' | 'string' }
 > = {
@@ -14,3 +14,9 @@ export const equipmentConfig: Record<
   engine: { icon: 'icon-fuel-pump', label: 'Engine', type: 'string' },
   transmission: { icon: 'icon-diagram', label: 'Transmission', type: 'string' },
 };
+
+export const vehicleTypeData = [
+    { key: "van", label: "Van", icon: 'icon-wind' },
+    { key: "fully-integrated", label: "Fully Integrated", icon: 'icon-wind' },
+    { key: "alcove", label: "Alcove", icon: 'icon-wind' },
+  ];

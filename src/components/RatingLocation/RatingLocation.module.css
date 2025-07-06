@@ -1,0 +1,8 @@
+.ratingLoc {
+  display: flex;
+  gap: 16px;
+}
+
+.iconStar {
+  color: var(--star);
+}

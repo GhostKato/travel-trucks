@@ -6,6 +6,7 @@ import { fetchTruckDetails } from "../../redux/trucks/operations";
 import clsx from "clsx";
 import s from './TrucksDetailsPage.module.css';
 import { selectSelectedTruck } from "../../redux/trucks/selectors";
+import RatingLocation from "../../components/RatingLocation/RatingLocation";
 
 interface BuildLinkClassParams {
   isActive: boolean;
@@ -30,18 +31,7 @@ export const TrucksDetailsPage: React.FC = () => {
     <div className={s.container}>
       <h1 className={s.name}>{truck?.name}</h1>
 
-      <ul className={s.ratingLoc}>
-        <li>
-          <svg className={s.iconStar} width="18" height="18" fill="currentColor">
-            <use href="/sprite.svg#icon-star" />
-          </svg> {`${truck?.rating} (${truck?.reviews?.length ?? 0} Reviews)`}
-        </li>
-        <li>
-          <svg width="18" height="18" fill="currentColor">
-            <use href="/sprite.svg#icon-map" />
-          </svg> {truck?.location}
-        </li>
-      </ul>
+      {truck && <RatingLocation truck={truck} />}
 
       <h2 className={s.price}>{truck ? `€ ${truck.price.toFixed(2)}` : ""}</h2>
 

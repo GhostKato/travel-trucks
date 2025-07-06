@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Truck } from '../../types/types';
-import { equipmentConfig} from '../../config/equipmentCofig';
+import { equipmentData } from '../../constants';
 import s from './EquipmentItem.module.css';
 
 interface EquipmentItemProps {
@@ -10,7 +10,7 @@ interface EquipmentItemProps {
 const EquipmentItem: React.FC<EquipmentItemProps> = ({ truck }) => {
   return (
     <>
-      {Object.entries(equipmentConfig).map(([key, { icon, label, type }]) => {
+      {Object.entries(equipmentData).map(([key, { icon, label, type }]) => {
        
         const value = (truck as any)[key];
 

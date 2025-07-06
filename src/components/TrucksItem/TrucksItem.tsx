@@ -4,6 +4,7 @@ import type { Truck } from '../../types/types';
 import s from './TrucksItem.module.css';
 import EquipmentList from '../EquipmentList/EquipmentList';
 import Button from '../Button/Button';
+import RatingLocation from '../RatingLocation/RatingLocation';
 
 interface TrucksItemProps {
   truck: Truck;
@@ -29,19 +30,10 @@ const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => {
         <use href="/sprite.svg#icon-heart" />
                 </svg></h3>
         </div>       
-         <div className={s.descriptionCont}>
-            <ul className={s.ratingLoc}>
-              <li>
-              <svg className={s.iconStar} width="18" height="18" fill="currentColor">
-        <use href="/sprite.svg#icon-star" />
-                </svg> {`${truck.rating}(${truck.reviews.length}Revievs)`}
-            </li>
-            <li>
-                <svg width="18" height="18" fill="currentColor">
-        <use href="/sprite.svg#icon-map" />
-                </svg> {truck.location}
-              </li>
-          </ul>
+        <div className={s.descriptionCont}>
+          
+          {truck && <RatingLocation truck={truck} />}
+          
           <p className={s.description}>{truck.description}</p>
           <EquipmentList truck={truck} />
           <Button className="show" onClick={handleClick}>

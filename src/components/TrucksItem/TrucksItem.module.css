@@ -20,11 +20,6 @@
   max-width: 320px;
 }
 
-.ratingLoc {
-  display: flex;
-  gap: 16px;
-}
-
 .namePrice {
   display: flex;
   flex-direction: column;
@@ -36,10 +31,6 @@
   display: flex;
   flex-direction: column;
   gap: 1px;
-}
-
-.iconStar {
-  color: var(--star);
 }
 
 /* .iconHeart {

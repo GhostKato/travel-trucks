@@ -15,8 +15,8 @@ export const equipmentData: Record<
   transmission: { icon: 'icon-diagram', label: 'Transmission', type: 'string' },
 };
 
-export const vehicleTypeData = [
-    { key: "van", label: "Van", icon: 'icon-wind' },
-    { key: "fully-integrated", label: "Fully Integrated", icon: 'icon-wind' },
-    { key: "alcove", label: "Alcove", icon: 'icon-wind' },
+export const typeData = [
+    { key: "van", label: "Van", icon: 'icon-grid-1x2' },
+    { key: "fully-integrated", label: "Fully Integrated", icon: 'icon-grid' },
+    { key: "alcove", label: "Alcove", icon: 'icon-grid-3x3' },
   ];

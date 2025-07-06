@@ -6,7 +6,6 @@
   align-items: center;
   padding-top: 10px;
   position: relative;
-  /* box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5); */
 }
 
 .logo {
@@ -25,7 +24,6 @@
 .link {
   color: var(--text-black);
   font-size: 30px;
-  /* text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); */
   transition: color 0.3s ease;
   &:hover {
     color: var(--hover);

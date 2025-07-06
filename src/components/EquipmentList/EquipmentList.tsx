@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Truck } from '../../types/types';
+import type { Truck } from '../../types';
 import { useSelector } from 'react-redux';
 import s from './EquipmentList.module.css'
 import EquipmentItem from '../EquipmentItem/EquipmentItem'

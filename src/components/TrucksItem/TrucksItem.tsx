@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { Truck } from '../../types/types';
+import type { Truck } from '../../types';
 import s from './TrucksItem.module.css';
 import EquipmentList from '../EquipmentList/EquipmentList';
 import Button from '../Button/Button';

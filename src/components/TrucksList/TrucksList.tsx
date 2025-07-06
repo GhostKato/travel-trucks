@@ -2,10 +2,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import s from './TrucksList.module.css';
 import TrucksItem from '../TrucksItem/TrucksItem';
-import { selectTrucks, selectIsLoading } from '../../redux/trucks/selectors';
+import { selectIsLoading } from '../../redux/trucks/selectors';
+import type { Truck } from "../../types";
 
-const TrucksList: React.FC = () => {
-  const trucks = useSelector(selectTrucks);
+type TrucksListProps = {
+  trucks: Truck[];
+}
+
+const TrucksList: React.FC<TrucksListProps> = ({ trucks }) => {
   const isLoading = useSelector(selectIsLoading);  
 
   if (isLoading) {

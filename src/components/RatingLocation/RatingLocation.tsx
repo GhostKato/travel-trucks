@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./RatingLocation.module.css";
-import type { Truck } from "../../types/types";
+import type { Truck } from "../../types";
 
 interface RatingLocationProps {
   truck: Truck;

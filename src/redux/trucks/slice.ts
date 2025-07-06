@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchTrucks, fetchTruckDetails } from "./operations";
-import type { TrucksState } from "../../types/types";
+import type { TrucksState } from "../../types";
 
 const initialState: TrucksState = {
   trucks: [],

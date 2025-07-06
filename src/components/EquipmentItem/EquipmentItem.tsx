@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Truck } from '../../types/types';
+import type { Truck } from '../../types';
 import { equipmentData } from '../../constants';
 import s from './EquipmentItem.module.css';
 

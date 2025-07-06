@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { campersApi } from "../../config/campersApi";
-import type { Truck } from "../../types/types";
+import type { Truck } from "../../types";
 
 type TrucksApiResponse = {
   items: Truck[];
@@ -38,8 +38,7 @@ export const fetchTruckDetails = createAsyncThunk<
   "trucks/fetchById",
   async (id, thunkAPI) => {
     try {
-      const { data } = await campersApi.get<Truck>(`/campers/${id}`);
-      // console.log(data);
+      const { data } = await campersApi.get<Truck>(`/campers/${id}`);      
       return data;
     } catch (error: unknown) {
       if (error instanceof Error) {

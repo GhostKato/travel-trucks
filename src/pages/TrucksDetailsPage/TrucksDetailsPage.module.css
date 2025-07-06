@@ -10,6 +10,9 @@
 
 .container {
   margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
 }
 
 .name {
@@ -43,25 +46,59 @@
 
 .gallery {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   gap: 10px;
   padding-bottom: 28px;
 }
 
 .galleryItem {
-  border-radius: 10px;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
-  width: 200px;
-  height: 200px;
+  width: 100%;
 }
 
 .img {
-  width: 200px;
-  height: 200px;
+  width: 255px;
+  height: 355px;
   object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .img {
+    width: 755px;
+    height: 855px;
+  }
 }
 
 @media (min-width: 1024px) {
   .container {
-    margin: 48px 64px 80px 64px;
+    margin: 48px;
+    padding: 48px 64px 80px 64px;
+  }
+
+  .img {
+    width: 855px;
+    height: 955px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    margin: 48px;
+    padding: 48px 64px 80px 64px;
+  }
+
+  .gallery {
+    flex-direction: row;
+    gap: 48px;
+  }
+
+  .img {
+    width: 800px;
+    height: 900px;
   }
 }

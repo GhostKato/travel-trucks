@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Truck } from '../../types/types';
 import s from './TrucksItem.module.css';
 import EquipmentList from '../EquipmentList/EquipmentList';
@@ -8,7 +9,13 @@ interface TrucksItemProps {
   truck: Truck;
 }
 
-const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => { 
+const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => {   
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/catalog/${truck.id}`);
+  };  
 
   return (
     <li className={s.item}>
@@ -37,7 +44,7 @@ const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => {
           </ul>
           <p className={s.description}>{truck.description}</p>
           <EquipmentList truck={truck} />
-          <Button className="show">
+          <Button className="show" onClick={handleClick}>
         Show more
       </Button> 
           

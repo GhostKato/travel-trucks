@@ -6,9 +6,7 @@ import { selectTrucks, selectIsLoading } from '../../redux/trucks/selectors';
 
 const TrucksList: React.FC = () => {
   const trucks = useSelector(selectTrucks);
-  const isLoading = useSelector(selectIsLoading);
-
-  console.log("TrucksList: trucks =", trucks, Array.isArray(trucks), "isLoading =", isLoading);
+  const isLoading = useSelector(selectIsLoading);  
 
   if (isLoading) {
     return <div className={s.loading}>Loading trucks...</div>;

@@ -39,6 +39,7 @@ export const fetchTruckDetails = createAsyncThunk<
   async (id, thunkAPI) => {
     try {
       const { data } = await campersApi.get<Truck>(`/campers/${id}`);
+      // console.log(data);
       return data;
     } catch (error: unknown) {
       if (error instanceof Error) {

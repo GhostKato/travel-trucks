@@ -40,6 +40,7 @@ export const trucksSlice = createSlice({
       .addCase(fetchTruckDetails.fulfilled, (state, action) => {
         state.isLoading = false;
         state.selectedTruck = action.payload;
+        console.log(state.selectedTruck);
       })
       .addCase(fetchTruckDetails.rejected, (state, action) => {
         state.isLoading = false;

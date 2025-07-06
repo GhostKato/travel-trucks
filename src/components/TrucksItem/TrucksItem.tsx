@@ -6,7 +6,7 @@ import EquipmentList from '../EquipmentList/EquipmentList';
 import Button from '../Button/Button';
 import RatingLocation from '../RatingLocation/RatingLocation';
 
-interface TrucksItemProps {
+type TrucksItemProps = {
   truck: Truck;
 }
 

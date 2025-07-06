@@ -1,8 +1,7 @@
 export type Review = {
-  id: string;
+  reviewer_name: string;
+  reviewer_rating: number;
   comment: string;
-  rating: number;
-  user: string;
 };
 
 export type GalleryItem = {

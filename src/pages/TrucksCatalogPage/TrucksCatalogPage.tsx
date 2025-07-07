@@ -5,9 +5,11 @@ import { fetchTrucks } from '../../redux/trucks/operations';
 import { selectTrucks } from '../../redux/trucks/selectors';
 import TrucksList from '../../components/TrucksList/TrucksList';
 import s from './TrucksCatalogPage.module.css'
+import FilterPanel from '../../components/FilterPanel/FilterPanel';
+import { selectFilteredTrucks } from '../../redux/filters/selectors';
 
 const TrucksCatalogPage: React.FC = () => {
-  const trucks = useSelector(selectTrucks);
+  const filteredTrucks = useSelector(selectFilteredTrucks);
   const dispatch: AppDispatch = useDispatch();  
 
   useEffect(() => {
@@ -16,7 +18,8 @@ const TrucksCatalogPage: React.FC = () => {
 
   return (
     <div className={s.container}>
-      <TrucksList trucks={trucks} />
+      <FilterPanel/>
+      <TrucksList filteredTrucks={filteredTrucks} />
     </div>
   );
 };

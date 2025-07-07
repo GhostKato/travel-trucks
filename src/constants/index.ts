@@ -17,6 +17,6 @@ export const equipmentData: Record<
 
 export const typeData = [
     { key: "van", label: "Van", icon: 'icon-grid-1x2' },
-    { key: "fully-integrated", label: "Fully Integrated", icon: 'icon-grid' },
-    { key: "alcove", label: "Alcove", icon: 'icon-grid-3x3' },
+    { key: "fully-integrated", label: "Fully Integrated", icon: 'icon-grid-3x3' },
+    { key: "alcove", label: "Alcove", icon: 'icon-grid' },
   ];

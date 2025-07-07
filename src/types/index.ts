@@ -23,9 +23,9 @@ export type Truck = {
   width: string;         
   height: string;        
   tank: string;          
-  consumption: string;   
+  consumption: string;
+  transmission: string;
 };
-
 
 export type TrucksState = {
   trucks: Truck[];

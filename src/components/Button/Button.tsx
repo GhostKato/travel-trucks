@@ -6,11 +6,16 @@ type ButtonProps = {
   className?: 'header' | 'home' | 'search' | 'show' | 'send';
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type?: 'button' | 'submit' | 'reset'; 
 };
 
-const Button: React.FC<ButtonProps> = ({ className, children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ className, children, onClick, type = 'button' }) => {
   return (
-    <button className={clsx(s.button, className && s[className])} onClick={onClick}>
+    <button
+      className={clsx(s.button, className && s[className])}
+      onClick={onClick}
+      type={type} 
+    >
       {children}
     </button>
   );

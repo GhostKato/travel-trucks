@@ -60,4 +60,16 @@
     left: none;
     transform: none;
   }
+
+  .search {
+    width: 166px;
+    height: 56px;
+    background-color: var(--button);
+    color: var(--text-white);
+    border-radius: 200px;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: var(--hover);
+    }
+  }
 }

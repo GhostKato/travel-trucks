@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import trucksReducer from "./trucks/slice";
 import { filtersReducer } from "./filters/slice";
 import { favouritesReducer } from "./favourites/slice";
+import modalReducer from './modal/slice';
 
 import {
   persistStore,
@@ -27,6 +28,7 @@ export const store = configureStore({
   reducer: {
     trucks: trucksReducer,
     filters: filtersReducer,
+    modal: modalReducer,
     favourites: persistedFavouritesReducer, 
   },
   middleware: (getDefaultMiddleware) =>

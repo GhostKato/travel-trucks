@@ -3,6 +3,8 @@ import s from './Header.module.css';
 import clsx from 'clsx';
 import { FaSearch } from "react-icons/fa";
 import Button from "../Button/Button";
+import { openModal } from '../../redux/modal/slice';
+import { useDispatch } from "react-redux";
 
 type BuildLinkClassParams = {
   isActive: boolean;
@@ -14,7 +16,8 @@ const buildLinkClass = ({ isActive }: BuildLinkClassParams): string => {
 
 const Header: React.FC = () => {
   const location = useLocation();
-  const isCatalog = location.pathname.startsWith('/catalog');  
+  const isCatalog = location.pathname.startsWith('/catalog');
+  const dispatch = useDispatch();
 
   return (
     <header className={s.header}>      
@@ -29,7 +32,7 @@ const Header: React.FC = () => {
         </NavLink>
       </div>
       {isCatalog &&
-        <Button className="filterModal">
+        <Button className="filterModal" onClick={() => dispatch(openModal('filters'))}>
           <FaSearch size={30} />
         </Button>}      
     </header>

@@ -6,13 +6,16 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import TrucksFeatures from "../TrucksFeatures/TrucksFeatures";
 import TrucksReviews from "../TrucksReviews/TrucksReviews";
 import Layout from "../Layout/Layout";
+import FavouritesPage from "../../pages/FavouritesPage/FavouritesPage";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        
         <Route index element={<HomePage />} />
         <Route path="catalog" element={<TrucksCatalogPage />} />
+        <Route path="favourites" element={<FavouritesPage />} />
 
         <Route path="catalog/:id/" element={<TrucksDetailsPage />}>
           <Route index element={<Navigate to="features" replace />} />

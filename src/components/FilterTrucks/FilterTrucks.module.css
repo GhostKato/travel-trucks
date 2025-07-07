@@ -30,8 +30,8 @@
   color: var(--Text, #475467);
   font-weight: 500;
   line-height: 24px;
-  padding-top: 40px;
-  padding-bottom: 32px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .title {
@@ -48,7 +48,7 @@
   flex-wrap: wrap;
   gap: 8px 12px;
   padding-top: 24px;
-  padding-bottom: 32px;
+  padding-bottom: 12px;
 }
 
 .labelEquipment {
@@ -96,7 +96,7 @@
   flex-wrap: wrap;
   gap: 8px 12px;
   padding-top: 24px;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 
 .labelEquipment:has(.inputEquipment:checked) {

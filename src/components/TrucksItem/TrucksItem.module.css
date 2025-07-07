@@ -40,9 +40,15 @@
   gap: 1px;
 }
 
-/* .iconHeart {
-  stroke: red;
-} */
+.heartIcon {
+  &:hover {
+    fill: var(--hover);
+  }
+}
+
+.fav {
+  fill: var(--button);
+}
 
 @media (min-width: 768px) {
   .namePrice {

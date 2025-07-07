@@ -3,7 +3,7 @@ import s from './Button.module.css';
 import clsx from 'clsx';
 
 type ButtonProps = {
-  className?: 'header' | 'home' | 'search' | 'show' | 'send';
+  className?: 'header' | 'home' | 'search' | 'show' | 'send' | 'favourites';
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: 'button' | 'submit' | 'reset'; 

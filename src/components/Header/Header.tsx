@@ -19,6 +19,11 @@ const Header: React.FC = () => {
       <div className={`${s.container} container`}>
         <NavLink className={buildLinkClass} to="/">Home</NavLink>
         <NavLink className={buildLinkClass} to="/catalog">Catalog</NavLink>
+        <NavLink className={buildLinkClass} to="/favourites">
+          <svg className={s.iconHeart} width="25" height="24" fill="currentColor">
+          <use href="/sprite.svg#icon-heart" />
+          </svg>
+        </NavLink>
       </div>
       <Button className="header">
         <FaSearch size={30}/>

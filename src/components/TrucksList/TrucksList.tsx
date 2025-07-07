@@ -6,23 +6,23 @@ import { selectIsLoading } from '../../redux/trucks/selectors';
 import type { Truck } from "../../types";
 
 type TrucksListProps = {
-  filteredTrucks: Truck[];
+  trucks: Truck[];
 };
 
-const TrucksList: React.FC<TrucksListProps> = ({ filteredTrucks }) => {
+const TrucksList: React.FC<TrucksListProps> = ({ trucks }) => {
   const isLoading = useSelector(selectIsLoading);  
 
   if (isLoading) {
     return <div className={s.loading}>Loading trucks...</div>;
   }
 
-  if (!Array.isArray(filteredTrucks) || filteredTrucks.length === 0) {
+  if (!Array.isArray(trucks) || trucks.length === 0) {
     return <div className={s.empty}>No trucks found.</div>;
   }
 
   return (
     <ul className={s.list}>
-      {filteredTrucks.map((truck) => (
+      {trucks.map((truck) => (
         <TrucksItem key={truck.id} truck={truck} />
       ))}
     </ul>

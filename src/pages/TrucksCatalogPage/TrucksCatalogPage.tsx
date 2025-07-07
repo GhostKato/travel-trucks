@@ -1,25 +1,17 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import type { AppDispatch } from '../../redux/store';
-import { fetchTrucks } from '../../redux/trucks/operations';
-import { selectTrucks } from '../../redux/trucks/selectors';
+import React from 'react';
+import { useSelector} from 'react-redux';
 import TrucksList from '../../components/TrucksList/TrucksList';
 import s from './TrucksCatalogPage.module.css'
 import FilterPanel from '../../components/FilterPanel/FilterPanel';
 import { selectFilteredTrucks } from '../../redux/filters/selectors';
 
 const TrucksCatalogPage: React.FC = () => {
-  const filteredTrucks = useSelector(selectFilteredTrucks);
-  const dispatch: AppDispatch = useDispatch();  
-
-  useEffect(() => {
-    dispatch(fetchTrucks());
-  }, [dispatch]);
+  const filteredTrucks = useSelector(selectFilteredTrucks);    
 
   return (
     <div className={s.container}>
       <FilterPanel/>
-      <TrucksList filteredTrucks={filteredTrucks} />
+      <TrucksList trucks={filteredTrucks} />
     </div>
   );
 };

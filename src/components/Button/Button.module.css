@@ -43,6 +43,10 @@
   }
 }
 
+.favourites {
+  background-color: transparent;
+}
+
 @media (min-width: 768px) {
   .show {
     width: 166px;

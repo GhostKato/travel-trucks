@@ -1,11 +1,15 @@
 import React from 'react'
 import s from './FilterModal.module.css'
 import FilterTrucks from '../FilterTrucks/FilterTrucks'
+import Button from '../Button/Button';
 
-const FilterModal = () => {
+const FilterModal: React.FC = () => {
   return (
-    <div>
-      <FilterTrucks/>
+    <div className={s.modalOverlay}>
+      <Button className='close'>X</Button>
+      <div className={s.modalContent}>
+        <FilterTrucks />
+      </div>
     </div>
   )
 }

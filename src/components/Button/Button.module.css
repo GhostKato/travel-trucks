@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.header {
+.filterModal {
   position: absolute;
   right: 14px;
   transition: color 0.3s ease;
@@ -14,7 +14,7 @@
   }
 }
 
-.home {
+.viewNow {
   background-color: var(--button);
   color: var(--text-white);
   padding: 16px 48px;
@@ -28,7 +28,7 @@
   }
 }
 
-.show {
+.showMore {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -48,18 +48,18 @@
 }
 
 @media (min-width: 768px) {
-  .show {
+  .showMore {
     width: 166px;
     height: 56px;
   }
 }
 
 @media (min-width: 1024px) {
-  .header {
+  .filterModal {
     display: none;
   }
 
-  .show {
+  .showMore {
     position: static;
     left: none;
     transform: none;

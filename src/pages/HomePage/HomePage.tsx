@@ -14,7 +14,7 @@ const HomePage = () => {
     <div className={s.container}>
       <h1 className={s.title}>Campers of your dreams</h1>
       <p className={s.p}>You can find everything you want in our catalog</p>
-      <Button className="home" onClick={handleClick}>
+      <Button className="viewNow" onClick={handleClick}>
         View Now
       </Button> 
     </div>

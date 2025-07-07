@@ -53,7 +53,7 @@ const TrucksItem: React.FC<TrucksItemProps> = ({ truck }) => {
           {truck && <RatingLocation truck={truck} />}
           <p className={s.description}>{truck.description}</p>
           <EquipmentList truck={truck} />
-          <Button className="show" onClick={handleShowClick}>
+          <Button className="showMore" onClick={handleShowClick}>
             Show more
           </Button> 
         </div>

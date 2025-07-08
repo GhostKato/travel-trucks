@@ -47,6 +47,26 @@
   background-color: transparent;
 }
 
+.search {
+  margin: 0 auto;
+  width: 150px;
+  height: 50px;
+  background-color: var(--button);
+  color: var(--text-white);
+  border-radius: 200px;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
+.close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background-color: transparent;
+}
+
 @media (min-width: 768px) {
   .showMore {
     width: 166px;
@@ -68,12 +88,6 @@
   .search {
     width: 166px;
     height: 56px;
-    background-color: var(--button);
-    color: var(--text-white);
-    border-radius: 200px;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: var(--hover);
-    }
+    margin: 0;
   }
 }

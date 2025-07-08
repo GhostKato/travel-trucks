@@ -1,11 +1,14 @@
 .form {
-  max-width: 360px;
+  /* менять */
+  max-width: 320px;
 }
 
 .labelLocation {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  /* менять */
+  gap: 5px;
+  /* пртьпрьтп */
   color: var(--Gray, #6c717b);
   font-weight: 400;
   line-height: 24px;
@@ -14,15 +17,17 @@
 
 .iconMap {
   position: absolute;
+  /* менять */
   bottom: 17px;
   left: 20px;
 }
 
 .inputLocation {
-  height: 56px;
   border: none;
   border-radius: 12px;
   background-color: #f7f7f7;
+  /* менять */
+  height: 56px;
   padding-left: 48px;
 }
 
@@ -30,12 +35,14 @@
   color: var(--Text, #475467);
   font-weight: 500;
   line-height: 24px;
+  /* менять */
   padding-top: 12px;
   padding-bottom: 12px;
 }
 
 .title {
-  padding-bottom: 24px;
+  /* менять */
+  padding-bottom: 15px;
   border-bottom: 1px solid #dadde1;
   color: var(--Main, #101828);
   font-size: 20px;
@@ -46,9 +53,11 @@
 .equipmentContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 12px;
+  /* менять */
+  gap: 4px 6px;
   padding-top: 24px;
   padding-bottom: 12px;
+  justify-content: center;
 }
 
 .labelEquipment {
@@ -56,10 +65,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* менять */
   gap: 8px;
-  width: 112px;
-  height: 96px;
-  gap: 12px 8px;
+  width: 100px;
+  height: 86px;
   border: 1px solid #dadde1;
   border-radius: 12px;
   &:hover {
@@ -80,10 +89,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* менять   */
+  width: 100px;
+  height: 86px;
   gap: 8px;
-  width: 112px;
-  height: 96px;
-  gap: 12px 8px;
   border: 1px solid #dadde1;
   border-radius: 12px;
   &:hover {
@@ -93,10 +102,12 @@
 
 .typeContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
+  flex-wrap: nowrap;
+  /* менять */
+  gap: 4px 6px;
   padding-top: 24px;
   padding-bottom: 30px;
+  justify-content: center;
 }
 
 .labelEquipment:has(.inputEquipment:checked) {
@@ -105,4 +116,58 @@
 
 .labelType:has(.inputType:checked) {
   border-color: var(--hover);
+}
+
+@media (min-width: 1024px) {
+  .form {
+    max-width: 360px;
+  }
+
+  .labelLocation {
+    gap: 8px;
+  }
+
+  .iconMap {
+    bottom: 17px;
+    left: 20px;
+  }
+
+  .inputLocation {
+    height: 56px;
+    padding-left: 48px;
+  }
+
+  .pFilter {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .title {
+    padding-bottom: 24px;
+  }
+
+  .equipmentContainer {
+    gap: 8px 12px;
+    padding-top: 24px;
+    padding-bottom: 12px;
+    min-width: 360px;
+  }
+
+  .labelEquipment {
+    gap: 8px;
+    width: 112px;
+    height: 96px;
+  }
+
+  .labelType {
+    width: 112px;
+    height: 96px;
+    gap: 8px;
+  }
+
+  .typeContainer {
+    gap: 8px 12px;
+    padding-top: 24px;
+    padding-bottom: 30px;
+  }
 }

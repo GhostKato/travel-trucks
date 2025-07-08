@@ -10,9 +10,9 @@ const FilterModal: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className={s.modalOverlay}>
-      <Button className='close' onClick={() => dispatch(closeModal('filters'))}>X</Button>
+    <div className={s.modalOverlay}>      
       <div className={s.modalContent}>
+      <Button className='close' onClick={() => dispatch(closeModal('filters'))}>X</Button>
         <FilterTrucks />
       </div>
     </div>

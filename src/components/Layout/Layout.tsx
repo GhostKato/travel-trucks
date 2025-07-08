@@ -7,11 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTrucks } from "../../redux/trucks/operations";
 import FilterModal from "../FilterModal/FilterModal";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
+import useIsDesktop from "../../hooks/useIsDesktop";
 
 const Layout: React.FC = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const isOpen = useSelector(selectIsModalOpen('filters'));
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
       dispatch(fetchTrucks());
@@ -21,7 +23,7 @@ const Layout: React.FC = () => {
     <div className={s.layout}>
       <Header />
       <main className={s.container}>
-      {isOpen && (
+      {isOpen && !isDesktop && (
         <FilterModal />
       )}
         <Outlet />

@@ -46,6 +46,7 @@
   .container {
     padding: 44px 52px;
     margin-top: 44px;
+    flex: 1;
   }
 
   .details {

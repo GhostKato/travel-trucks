@@ -40,6 +40,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .list {
+    flex: 1;
+  }
+}
+
 @media (min-width: 1440px) {
   .list {
     margin-top: 56px;

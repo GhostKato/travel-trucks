@@ -6,6 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import App from './components/App/App.tsx';
 import 'modern-normalize';
 import "./index.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>

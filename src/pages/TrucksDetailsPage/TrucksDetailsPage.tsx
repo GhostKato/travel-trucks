@@ -7,6 +7,7 @@ import clsx from "clsx";
 import s from './TrucksDetailsPage.module.css';
 import { selectSelectedTruck } from "../../redux/trucks/selectors";
 import RatingLocation from "../../components/RatingLocation/RatingLocation";
+import TruckOrderForm from "../../components/TruckOrderForm/TruckOrderForm";
 
 interface BuildLinkClassParams {
   isActive: boolean;
@@ -53,10 +54,11 @@ export const TrucksDetailsPage: React.FC = () => {
         <NavLink to="reviews" className={buildLinkClass}>
           Reviews
         </NavLink>
-      </nav>
-
-      
-      <Outlet />
+      </nav>      
+<div className={s.featuresReviewsForm}>
+        <Outlet />
+        <TruckOrderForm/>
+</div>
     </div>
   );
 };

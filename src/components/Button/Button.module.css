@@ -67,6 +67,19 @@
   background-color: transparent;
 }
 
+.send {
+  border-radius: 200px;
+  width: 166px;
+  height: 56px;
+  margin: 0 auto;
+  background-color: var(--button);
+  color: var(--text-white);
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
 @media (min-width: 768px) {
   .showMore {
     width: 166px;

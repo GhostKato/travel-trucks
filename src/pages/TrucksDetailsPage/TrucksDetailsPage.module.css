@@ -71,8 +71,8 @@
 }
 
 .img {
-  width: 255px;
-  height: 355px;
+  width: 335px;
+  height: 400px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -91,7 +91,7 @@
 
 @media (min-width: 768px) {
   .img {
-    width: 755px;
+    width: 730px;
     height: 855px;
   }
 
@@ -115,8 +115,8 @@
   }
 
   .img {
-    width: 855px;
-    height: 955px;
+    width: 1000px;
+    height: 1400px;
   }
 
   .description {

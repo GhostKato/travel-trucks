@@ -34,90 +34,97 @@ const FilterTrucks: React.FC = () => {
         );
       }}
     >
-      {({ values }) => (
+      {({ values, resetForm }) => (
         <Form className={s.form}>
-
-
-          {/* Пошук локації */}           
+          {/* Пошук локації */}
           <label className={s.labelLocation}>
-          <svg className={s.iconMap} width="20" height="20" fill="currentColor">
-          <use href="/sprite.svg#icon-map" />
+            <svg className={s.iconMap} width="20" height="20" fill="currentColor">
+              <use href="/sprite.svg#icon-map" />
+            </svg>
+            Location
+            <Field
+              className={s.inputLocation}
+              name="location"
+              type="text"
+              placeholder="City"
+            />
+          </label>
+
+          <p className={s.pFilter}>Filter</p>
+
+          {/* Особливості - чекбокси */}
+          <h3 className={s.title}>Vehicle equipment</h3>
+          <div className={s.equipmentContainer}>
+            {featureOptions.map((feature) => {
+              const { label, icon } = equipmentData[feature];
+              return (
+                <label className={s.labelEquipment} key={feature}>
+                  <Field
+                    className={s.inputEquipment}
+                    type="checkbox"
+                    name="features"
+                    value={feature}
+                  />
+                  <svg width="32" height="32" style={{ marginRight: 4 }}>
+                    <use href={`/sprite.svg#${icon}`} />
                   </svg>
-              Location
-              <Field
-                className={s.inputLocation}
-                name="location"
-                type="text"
-                placeholder="City"                
-              />
-            </label>          
-          <p className={s.pFilter}>Filter</p> 
-          
+                  {label}
+                </label>
+              );
+            })}
+          </div>
 
-          {/* Особливості - чекбокси */}          
-            <h3 className={s.title}>Vehicle equipment</h3>
-            <div className={s.equipmentContainer}>
-              {featureOptions.map((feature) => {
-                const { label, icon } = equipmentData[feature];
-                return (
-                  <label
-                    className={s.labelEquipment}
-                    key={feature}                  
-                  >
-                    <Field
-                      className={s.inputEquipment}
-                      type="checkbox"
-                      name="features"
-                      value={feature}                    
-                    />
-                    <svg width="32" height="32" style={{ marginRight: 4 }}>
-                      <use href={`/sprite.svg#${icon}`} />
-                    </svg>
-                    {label}
-                  </label>
-                );
-              })}
-            </div>
-          
+          {/* Радіо кнопки для форм */}
+          <h3 className={s.title}>Vehicle type</h3>
+          <div className={s.typeContainer}>
+            {formOptions.map((formKey) => {
+              const typeItem = typeData.find((t) => t.key === formKey);
+              const label = typeItem?.label || formKey;
+              const icon = typeItem?.icon || "";
 
-          {/* Радіо кнопки для форм */}          
-            <h3 className={s.title}>Vehicle type</h3>
-            <div className={s.typeContainer}>
-              {formOptions.map((formKey) => {
-                const typeItem = typeData.find((t) => t.key === formKey);
-                const label = typeItem?.label || formKey;
-                const icon = typeItem?.icon || "";
-  
-                return (
-                  <label
-                    className={s.labelType}
-                    key={formKey}
-                    
-                  >
-                    <Field
-                      className={s.inputType}
-                      type="radio"
-                      name="form"
-                      value={formKey}
-                      style={{ marginRight: 4 }}
-                    />
-                    <svg width="32" height="32" >
-                      <use href={`/sprite.svg#${icon}`} />
-                    </svg>
-                   {label}
-                  </label>
-                );
-              })}
-          </div>    
-          
+              return (
+                <label className={s.labelType} key={formKey}>
+                  <Field
+                    className={s.inputType}
+                    type="radio"
+                    name="form"
+                    value={formKey}
+                    style={{ marginRight: 4 }}
+                  />
+                  <svg width="32" height="32">
+                    <use href={`/sprite.svg#${icon}`} />
+                  </svg>
+                  {label}
+                </label>
+              );
+            })}
+          </div>
 
-          {/* Кнопка застосування фільтрів */}          
+          {/* Кнопки пошуку та скидання */}
+          <div className={s.buttonContainer}>            
+
             <Button
-              type='submit'
-              className='search'
+              type="button"
+              className="search"
+              onClick={() => {
+                resetForm();
+                dispatch(
+                  changeFilter({
+                    location: "",
+                    features: [],
+                    form: "",
+                  })
+                );
+              }}
             >
+              Reset
+            </Button>
+
+            <Button type="submit" className="search">
               Search
-            </Button>         
+            </Button>
+            
+          </div>
         </Form>
       )}
     </Formik>

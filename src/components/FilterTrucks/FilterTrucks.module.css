@@ -107,6 +107,11 @@
   border-color: var(--hover);
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 1024px) {
   .form {
     max-width: 360px;

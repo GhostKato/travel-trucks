@@ -101,10 +101,10 @@ const FilterTrucks: React.FC = () => {
                       value={formKey}
                       style={{ marginRight: 4 }}
                     />
-                    <svg width="16" height="16" >
+                    <svg width="32" height="32" >
                       <use href={`/sprite.svg#${icon}`} />
                     </svg>
-                    {label}
+                   {label}
                   </label>
                 );
               })}

@@ -95,6 +95,27 @@
   }
 }
 
+.scrollToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--button);
+  color: var(--text-white);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
 @media (min-width: 768px) {
   .showMore,
   .loadMore {
@@ -117,5 +138,9 @@
   .search {
     width: 166px;
     height: 56px;
+  }
+
+  .scrollToTop {
+    right: 58px;
   }
 }

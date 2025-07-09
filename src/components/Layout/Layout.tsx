@@ -8,6 +8,7 @@ import { fetchTrucks } from "../../redux/trucks/operations";
 import FilterModal from "../FilterModal/FilterModal";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
 import useIsDesktop from "../../hooks/useIsDesktop";
+import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 const Layout: React.FC = () => {
 
@@ -27,7 +28,8 @@ const Layout: React.FC = () => {
         <FilterModal />
       )}
         <Outlet />
-      </main>      
+      </main>
+      <ScrollToTopButton/>
     </div>
   );
 };

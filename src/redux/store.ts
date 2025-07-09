@@ -3,6 +3,8 @@ import trucksReducer from "./trucks/slice";
 import { filtersReducer } from "./filters/slice";
 import { favouritesReducer } from "./favourites/slice";
 import modalReducer from './modal/slice';
+import paginationReducer from './pagination/slice';
+
 
 import {
   persistStore,
@@ -29,6 +31,7 @@ export const store = configureStore({
     trucks: trucksReducer,
     filters: filtersReducer,
     modal: modalReducer,
+    pagination: paginationReducer,
     favourites: persistedFavouritesReducer, 
   },
   middleware: (getDefaultMiddleware) =>

@@ -3,8 +3,7 @@ import { fetchTrucks, fetchTruckDetails } from "./operations";
 import type { TrucksState } from "../../types";
 
 const initialState: TrucksState = {
-  trucks: [],
-  total: 0,
+  trucks: [],  
   selectedTruck: null,
   isLoading: false,
   error: null,
@@ -26,8 +25,7 @@ export const trucksSlice = createSlice({
       })
       .addCase(fetchTrucks.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.trucks = action.payload.items;
-        state.total = action.payload.total;
+        state.trucks = action.payload.items;       
       })
       .addCase(fetchTrucks.rejected, (state, action) => {
         state.isLoading = false;

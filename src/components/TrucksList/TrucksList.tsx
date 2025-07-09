@@ -19,13 +19,15 @@ const TrucksList: React.FC<TrucksListProps> = ({ trucks }) => {
   if (!Array.isArray(trucks) || trucks.length === 0) {
     return <div className={s.empty}>No trucks found.</div>;
   }
-
+  
   return (
-    <ul className={s.list}>
-      {trucks.map((truck) => (
-        <TrucksItem key={truck.id} truck={truck} />
-      ))}
-    </ul>
+    <>
+      <ul className={s.list}>
+        {trucks.map((truck) => (
+          <TrucksItem key={truck.id} truck={truck} />
+        ))}
+      </ul>
+    </>
   );
 };
 

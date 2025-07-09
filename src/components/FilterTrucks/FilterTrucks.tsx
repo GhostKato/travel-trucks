@@ -6,6 +6,7 @@ import { changeFilter } from "../../redux/filters/slice";
 import { equipmentData, typeData } from "../../constants/index";
 import s from "./FilterTrucks.module.css";
 import Button from "../Button/Button";
+import { resetVisibleCount } from "../../redux/pagination/slice";
 
 const FilterTrucks: React.FC = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const FilterTrucks: React.FC = () => {
             form: values.form,
           })
         );
+        dispatch(resetVisibleCount());
       }}
     >
       {({ values, resetForm }) => (
@@ -115,6 +117,7 @@ const FilterTrucks: React.FC = () => {
                     form: "",
                   })
                 );
+                dispatch(resetVisibleCount());
               }}
             >
               Reset

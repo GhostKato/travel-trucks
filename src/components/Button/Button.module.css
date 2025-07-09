@@ -17,7 +17,8 @@
 .viewNow {
   background-color: var(--button);
   color: var(--text-white);
-  padding: 16px 48px;
+  width: 140px;
+  height: 50px;
   border-radius: 200px;
   font-weight: 500;
   line-height: 24px;
@@ -38,6 +39,7 @@
   height: 50px;
   border-radius: 200px;
   color: var(--text-white);
+  transition: background-color 0.3s ease;
   &:hover {
     background-color: var(--hover);
   }
@@ -69,8 +71,8 @@
 
 .send {
   border-radius: 200px;
-  width: 166px;
-  height: 56px;
+  width: 140px;
+  height: 50px;
   margin: 0 auto;
   background-color: var(--button);
   color: var(--text-white);
@@ -80,8 +82,22 @@
   }
 }
 
+.loadMore {
+  border-radius: 200px;
+  width: 140px;
+  height: 50px;
+  margin: 0 auto;
+  border: 2px solid var(--border);
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+  &:hover {
+    border-color: var(--hover);
+  }
+}
+
 @media (min-width: 768px) {
-  .showMore {
+  .showMore,
+  .loadMore {
     width: 166px;
     height: 56px;
   }

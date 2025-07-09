@@ -4,11 +4,11 @@ import type { Truck } from "../../types";
 
 type TrucksApiResponse = {
   items: Truck[];
-  total: number;
+  
 };
 
 export const fetchTrucks = createAsyncThunk<
-  { items: Truck[]; total: number },
+  { items: Truck[];},
   void,
   { rejectValue: string }
 >(
@@ -18,8 +18,7 @@ export const fetchTrucks = createAsyncThunk<
       const { data } = await campersApi.get<TrucksApiResponse>("/campers");      
 
       return {
-        items: data.items,
-        total: data.total,
+        items: data.items,        
       };
     } catch (error: unknown) {
       if (error instanceof Error) {

@@ -28,8 +28,7 @@ export type Truck = {
 };
 
 export type TrucksState = {
-  trucks: Truck[];
-  total: number;
+  trucks: Truck[];  
   selectedTruck: Truck | null;
   isLoading: boolean;
   error: string | null;

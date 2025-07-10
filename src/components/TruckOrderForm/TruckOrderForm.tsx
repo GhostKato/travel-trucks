@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import s from "./TruckOrderForm.module.css";
 import Button from "../Button/Button";
-import Input from "../InputForm/InputForm";
+import Input from "../Input/Input";
 
 interface FormValues {
   name: string;

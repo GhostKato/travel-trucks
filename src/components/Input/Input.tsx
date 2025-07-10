@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, ErrorMessage, useFormikContext } from "formik";
 import DatePicker from "react-datepicker";
-import s from "./InputForm.module.css";
+import s from "./Input.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 type InputProps = {

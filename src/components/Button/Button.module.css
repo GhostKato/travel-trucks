@@ -8,6 +8,7 @@
 .filterModal {
   position: absolute;
   right: 14px;
+  background-color: transparent;
   transition: color 0.3s ease;
   &:hover {
     color: var(--hover);
@@ -67,6 +68,10 @@
   right: 8px;
   top: 8px;
   background-color: transparent;
+  transition: color 0.3s ease;
+  &:hover {
+    color: var(--hover);
+  }
 }
 
 .send {

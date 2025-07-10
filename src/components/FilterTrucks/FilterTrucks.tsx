@@ -7,6 +7,7 @@ import { equipmentData, typeData } from "../../constants/index";
 import s from "./FilterTrucks.module.css";
 import Button from "../Button/Button";
 import { resetVisibleCount } from "../../redux/pagination/slice";
+import { closeModal } from "../../redux/modal/slice";
 
 const FilterTrucks: React.FC = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const FilterTrucks: React.FC = () => {
           })
         );
         dispatch(resetVisibleCount());
+        dispatch(closeModal('filters'))
       }}
     >
       {({ values, resetForm }) => (

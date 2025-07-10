@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TrucksList from '../../components/TrucksList/TrucksList';
 import s from './TrucksCatalogPage.module.css';
@@ -7,15 +7,21 @@ import { selectFilteredTrucks } from '../../redux/filters/selectors';
 import type { RootState } from '../../redux/store';
 import { incrementVisibleCount } from '../../redux/pagination/slice';
 import Button from '../../components/Button/Button';
+import CubeLoader from '../../components/CubeLoader/CubeLoader';
 
 const TrucksCatalogPage: React.FC = () => {
   const dispatch = useDispatch();
   const filteredTrucks = useSelector(selectFilteredTrucks);
   const visibleCount = useSelector((state: RootState) => state.pagination.visibleCount);  
   const visibleTrucks = filteredTrucks.slice(0, visibleCount);
+  const [isSearching, setIsSearching] = useState(false);
 
   const handleLoadMore = () => {
     dispatch(incrementVisibleCount(6));
+    setIsSearching(true);
+    setTimeout(() => {
+    setIsSearching(false);
+    }, 3000);
   };
 
   return (
@@ -29,7 +35,8 @@ const TrucksCatalogPage: React.FC = () => {
               <Button className='loadMore' onClick={handleLoadMore}>
                 Load More
               </Button>
-            )}
+      )}
+       {isSearching && <CubeLoader />}
     </div>
   );
 };

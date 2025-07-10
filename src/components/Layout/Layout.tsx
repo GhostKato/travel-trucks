@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import s from "./Layout.module.css";
 import Header from "../Header/Header";
 import type { AppDispatch } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,11 +8,13 @@ import FilterModal from "../FilterModal/FilterModal";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
 import useIsDesktop from "../../hooks/useIsDesktop";
 import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
+import NotificationModal from "../NotificationModal/NotificationModal";
 
 const Layout: React.FC = () => {
 
   const dispatch: AppDispatch = useDispatch();
-  const isOpen = useSelector(selectIsModalOpen('filters'));
+  const isOpenFilter = useSelector(selectIsModalOpen('filters'));
+  const isOpenNotification = useSelector(selectIsModalOpen('notification'));
   const isDesktop = useIsDesktop();
 
   useEffect(() => {
@@ -21,12 +22,13 @@ const Layout: React.FC = () => {
     }, [dispatch]);
   
   return (
-    <div className={s.layout}>
+    <div>
       <Header />
-      <main className={s.container}>
-      {isOpen && !isDesktop && (
+      <main>
+      {isOpenFilter && !isDesktop && (
         <FilterModal />
-      )}
+        )}
+        {isOpenNotification && <NotificationModal />}
         <Outlet />
       </main>
       <ScrollToTopButton/>

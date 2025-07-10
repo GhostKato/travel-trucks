@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import s from "./TruckOrderForm.module.css";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import { useDispatch } from "react-redux";
+import { openModal, closeModal } from '../../redux/modal/slice';
 
 interface FormValues {
   name: string;
@@ -27,8 +29,15 @@ const validationSchema = Yup.object({
 });
 
 const TruckOrderForm: React.FC = () => {
+
+  const dispatch = useDispatch();
+
   const handleSubmit = (values: FormValues) => {
     console.log("Submitted data:", values);
+    dispatch(openModal('notification'));
+    setTimeout(() => {
+      dispatch(closeModal('notification'));
+    }, 5000);
   };
 
   return (

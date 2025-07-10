@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import type { RootState } from "../../redux/store";
@@ -8,17 +8,16 @@ import s from "./FilterTrucks.module.css";
 import Button from "../Button/Button";
 import { resetVisibleCount } from "../../redux/pagination/slice";
 import { closeModal } from "../../redux/modal/slice";
+import CubeLoader from "../CubeLoader/CubeLoader";
 
 const FilterTrucks: React.FC = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state: RootState) => state.filters);
-
   const featureOptions = Object.entries(equipmentData)
     .filter(([_, value]) => value.type === "boolean")
     .map(([key]) => key);
-
   const formOptions = typeData.map((type) => type.key);
-
+  const [isSearching, setIsSearching] = useState(false);
   return (
     <Formik
       initialValues={{
@@ -35,7 +34,11 @@ const FilterTrucks: React.FC = () => {
           })
         );
         dispatch(resetVisibleCount());
-        dispatch(closeModal('filters'))
+        dispatch(closeModal('filters'));
+        setIsSearching(true);
+        setTimeout(() => {
+          setIsSearching(false);
+        }, 3000);
       }}
     >
       {({ values, resetForm }) => (
@@ -53,7 +56,6 @@ const FilterTrucks: React.FC = () => {
               placeholder="City"
             />
           </label>
-
           <p className={s.pFilter}>Filter</p>
 
           {/* Особливості - чекбокси */}
@@ -85,7 +87,6 @@ const FilterTrucks: React.FC = () => {
               const typeItem = typeData.find((t) => t.key === formKey);
               const label = typeItem?.label || formKey;
               const icon = typeItem?.icon || "";
-
               return (
                 <label className={s.labelType} key={formKey}>
                   <Field
@@ -105,8 +106,7 @@ const FilterTrucks: React.FC = () => {
           </div>
 
           {/* Кнопки пошуку та скидання */}
-          <div className={s.buttonContainer}>            
-
+          <div className={s.buttonContainer}>          
             <Button
               type="button"
               className="search"
@@ -120,15 +120,18 @@ const FilterTrucks: React.FC = () => {
                   })
                 );
                 dispatch(resetVisibleCount());
+                setIsSearching(true);
+                setTimeout(() => {
+                setIsSearching(false);
+                }, 3000);
               }}
             >
               Reset
             </Button>
-
             <Button type="submit" className="search">
               Search
             </Button>
-            
+            {isSearching && <CubeLoader />}
           </div>
         </Form>
       )}

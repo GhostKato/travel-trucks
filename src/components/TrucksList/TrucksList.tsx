@@ -4,6 +4,7 @@ import s from './TrucksList.module.css';
 import TrucksItem from '../TrucksItem/TrucksItem';
 import { selectIsLoading } from '../../redux/trucks/selectors';
 import type { Truck } from "../../types";
+import CubeLoader from '../CubeLoader/CubeLoader';
 
 type TrucksListProps = {
   trucks: Truck[];
@@ -13,7 +14,7 @@ const TrucksList: React.FC<TrucksListProps> = ({ trucks }) => {
   const isLoading = useSelector(selectIsLoading);  
 
   if (isLoading) {
-    return <div className={s.loading}>Loading trucks...</div>;
+    return <div className={s.loading}><CubeLoader/></div>;
   }
 
   if (!Array.isArray(trucks) || trucks.length === 0) {

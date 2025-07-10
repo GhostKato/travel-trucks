@@ -21,9 +21,19 @@
 .inputLocation {
   border: none;
   border-radius: 12px;
-  background-color: #f7f7f7;
+  background-color: var(--background-light);
   height: 56px;
   padding-left: 48px;
+  transition: outline 0.3s ease;
+  &:hover {
+    outline: 1px solid var(--hover);
+  }
+  &:focus {
+    outline: 1px solid var(--button);
+  }
+  &::placeholder {
+    color: var(--text-placeholder);
+  }
 }
 
 .pFilter {
@@ -62,6 +72,7 @@
   height: 86px;
   border: 1px solid #dadde1;
   border-radius: 12px;
+  transition: border-color 0.3s ease;
   &:hover {
     border-color: var(--hover);
   }
@@ -95,17 +106,18 @@
   height: 86px;
   border: 1px solid #dadde1;
   border-radius: 12px;
+  transition: border-color 0.3s ease;
   &:hover {
     border-color: var(--hover);
   }
 }
 
 .labelEquipment:has(.inputEquipment:checked) {
-  border-color: var(--hover);
+  border-color: var(--button);
 }
 
 .labelType:has(.inputType:checked) {
-  border-color: var(--hover);
+  border-color: var(--button);
 }
 
 .buttonContainer {

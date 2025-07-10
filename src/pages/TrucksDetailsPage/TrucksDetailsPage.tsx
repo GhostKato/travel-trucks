@@ -17,7 +17,7 @@ const buildLinkClass = ({ isActive }: BuildLinkClassParams): string => {
   return clsx(s.link, isActive && s.active);
 };
 
-export const TrucksDetailsPage: React.FC = () => {
+const TrucksDetailsPage: React.FC = () => {
   const { id } = useParams();
   const dispatch: AppDispatch = useDispatch();
   const truck = useSelector(selectSelectedTruck);
@@ -62,3 +62,5 @@ export const TrucksDetailsPage: React.FC = () => {
     </div>
   );
 };
+
+export default TrucksDetailsPage;

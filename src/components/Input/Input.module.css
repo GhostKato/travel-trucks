@@ -10,11 +10,12 @@
   padding-left: 18px;
   background-color: var(--background-light);
   border: none;
+  transition: outline 0.3s ease;
   &:hover {
-    outline: 2px solid var(--hover);
+    outline: 1px solid var(--hover);
   }
   &:focus {
-    outline: 2px solid var(--button);
+    outline: 1px solid var(--button);
   }
   &::placeholder {
     color: var(--text-placeholder);
@@ -30,11 +31,12 @@
   padding-top: 18px;
   background-color: var(--background-light);
   border: none;
+  transition: outline 0.3s ease;
   &:hover {
-    outline: 2px solid var(--hover);
+    outline: 1px solid var(--hover);
   }
   &:focus {
-    outline: 2px solid var(--button);
+    outline: 1px solid var(--button);
   }
   &::placeholder {
     color: var(--text-placeholder);

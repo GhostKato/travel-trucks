@@ -92,7 +92,7 @@
   width: 140px;
   height: 50px;
   margin: 0 auto;
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
   background-color: transparent;
   transition: border-color 0.3s ease;
   &:hover {

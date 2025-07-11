@@ -5,7 +5,7 @@ import s from "./TruckOrderForm.module.css";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useDispatch } from "react-redux";
-import { openModal, closeModal } from '../../redux/modal/slice';
+import { openModal, closeModal } from "../../redux/modal/slice";
 
 interface FormValues {
   name: string;
@@ -29,37 +29,39 @@ const validationSchema = Yup.object({
 });
 
 const TruckOrderForm: React.FC = () => {
-
   const dispatch = useDispatch();
 
-  const handleSubmit = (values: FormValues) => {
+  const handleSubmit = (values: FormValues, { resetForm }: { resetForm: () => void }) => {
     console.log("Submitted data:", values);
-    dispatch(openModal('notification'));
+    dispatch(openModal("notification"));
     setTimeout(() => {
-      dispatch(closeModal('notification'));
+      dispatch(closeModal("notification"));
     }, 5000);
+    resetForm(); 
   };
 
   return (
-      <div className={s.container}>
-          <h3 className={s.title}>Book your campervan now</h3>
-          <p className={s.p}>Stay connected! We are always ready to help you.</p>
+    <div className={s.container}>
+      <h3 className={s.title}>Book your campervan now</h3>
+      <p className={s.p}>Stay connected! We are always ready to help you.</p>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
-     <div className={s.inputCont}>
+        {({ dirty }) => (
+          <Form>
+            <div className={s.inputCont}>
               <Input name="name" label="Name*" />
               <Input name="email" type="email" label="Email*" />
               <Input name="bookingDate" as="datepicker" label="Booking date*" />
               <Input name="comment" as="textarea" label="Comment" />
-     </div>
-          <Button type="submit" className="send">
-            Send
-          </Button>
-        </Form>
+            </div>
+            <Button type="submit" className="send" disabled={!dirty}>
+              Send
+            </Button>
+          </Form>
+        )}
       </Formik>
     </div>
   );

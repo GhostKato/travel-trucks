@@ -9,6 +9,7 @@ import Button from "../Button/Button";
 import { resetVisibleCount } from "../../redux/pagination/slice";
 import { closeModal } from "../../redux/modal/slice";
 import CubeLoader from "../CubeLoader/CubeLoader";
+import SearchLogic from "../SearchLogic/SearchLogic";
 
 const FilterTrucks: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,38 +19,53 @@ const FilterTrucks: React.FC = () => {
     .map(([key]) => key);
   const formOptions = typeData.map((type) => type.key);
   const [isSearching, setIsSearching] = useState(false);
+  const [searchLocked, setSearchLocked] = useState(false);
 
   return (
     <Formik
+      key={JSON.stringify(filters)}       
+      enableReinitialize                 
       initialValues={{
         location: filters.location || "",
         features: filters.features || [],
         form: filters.form || "",
       }}
-      onSubmit={(values) => {
-        dispatch(
-          changeFilter({
-            location: values.location,
-            features: values.features,
-            form: values.form,
-          })
-        );
+      onSubmit={(values, { setSubmitting }) => {
+        dispatch(changeFilter(values));
         dispatch(resetVisibleCount());
-        dispatch(closeModal('filters'));
+        dispatch(closeModal("filters"));
         setIsSearching(true);
+        setSearchLocked(true);
         setTimeout(() => {
           setIsSearching(false);
+          setSubmitting(false);
         }, 3000);
       }}
     >
-      {({ resetForm, dirty }) => {        
+      {({ values, resetForm }) => {
+        const isFilterEmpty =
+          !values.location.trim() &&
+          values.features.length === 0 &&
+          !values.form;
 
-        // Блокуємо кнопки, якщо форма порожня або не змінена
-        const isDisabled = !dirty;
+        const isSearchDisabled = isFilterEmpty || searchLocked;
+        const isResethDisabled = !isFilterEmpty;
+
+        const handleReset = () => {
+          resetForm();
+          dispatch(changeFilter({ location: "", features: [], form: "" }));
+          dispatch(resetVisibleCount());
+          setIsSearching(true);
+          setSearchLocked(false);
+          setTimeout(() => {
+            setIsSearching(false);
+          }, 3000);
+        };
 
         return (
           <Form className={s.form}>
-            {/* Пошук локації */}
+            <SearchLogic searchLocked={searchLocked} setSearchLocked={setSearchLocked} />
+            {/* Location */}
             <label className={s.labelLocation}>
               <svg className={s.iconMap} width="20" height="20" fill="currentColor">
                 <use href="/sprite.svg#icon-map" />
@@ -62,9 +78,10 @@ const FilterTrucks: React.FC = () => {
                 placeholder="City"
               />
             </label>
+
             <p className={s.pFilter}>Filter</p>
 
-            {/* Особливості - чекбокси */}
+            {/* Equipment */}
             <h3 className={s.title}>Vehicle equipment</h3>
             <div className={s.equipmentContainer}>
               {featureOptions.map((feature) => {
@@ -86,13 +103,11 @@ const FilterTrucks: React.FC = () => {
               })}
             </div>
 
-            {/* Радіо кнопки для форм */}
+            {/* Vehicle type */}
             <h3 className={s.title}>Vehicle type</h3>
             <div className={s.typeContainer}>
               {formOptions.map((formKey) => {
                 const typeItem = typeData.find((t) => t.key === formKey);
-                const label = typeItem?.label || formKey;
-                const icon = typeItem?.icon || "";
                 return (
                   <label className={s.labelType} key={formKey}>
                     <Field
@@ -103,42 +118,28 @@ const FilterTrucks: React.FC = () => {
                       style={{ marginRight: 4 }}
                     />
                     <svg width="32" height="32">
-                      <use href={`/sprite.svg#${icon}`} />
+                      <use href={`/sprite.svg#${typeItem?.icon || ""}`} />
                     </svg>
-                    {label}
+                    {typeItem?.label || formKey}
                   </label>
                 );
               })}
             </div>
 
-            {/* Кнопки пошуку та скидання */}
+            {/* Buttons */}
             <div className={s.buttonContainer}>
               <Button
                 type="button"
                 className="search"
-                disabled={isDisabled}
-                onClick={() => {
-                  resetForm();
-                  dispatch(
-                    changeFilter({
-                      location: "",
-                      features: [],
-                      form: "",
-                    })
-                  );
-                  dispatch(resetVisibleCount());
-                  setIsSearching(true);
-                  setTimeout(() => {
-                    setIsSearching(false);
-                  }, 3000);
-                }}
+                onClick={handleReset}
+                disabled={!isResethDisabled}
               >
                 Reset
               </Button>
               <Button
                 type="submit"
                 className="search"
-                disabled={isDisabled}
+                disabled={isSearchDisabled}
               >
                 Search
               </Button>

@@ -5,6 +5,16 @@
   align-items: center;
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #ccc;
+  color: #666;
+  &:hover {
+    background-color: #ccc;
+  }
+}
+
 .filterModal {
   position: absolute;
   right: 14px;

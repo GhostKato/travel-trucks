@@ -6,15 +6,17 @@ type ButtonProps = {
   className?: 'filterModal' | 'viewNow' | 'search' | 'showMore' | 'send' | 'favourites' | 'close' | 'loadMore' | 'scrollToTop';
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: 'button' | 'submit' | 'reset'; 
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 };
 
-const Button: React.FC<ButtonProps> = ({ className, children, onClick, type = 'button' }) => {
+const Button: React.FC<ButtonProps> = ({ className, children, onClick, type = 'button', disabled }) => {
   return (
     <button
       className={clsx(s.button, className && s[className])}
       onClick={onClick}
-      type={type} 
+      type={type}
+      disabled={disabled}
     >
       {children}
     </button>

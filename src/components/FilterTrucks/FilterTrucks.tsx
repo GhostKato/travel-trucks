@@ -18,6 +18,7 @@ const FilterTrucks: React.FC = () => {
     .map(([key]) => key);
   const formOptions = typeData.map((type) => type.key);
   const [isSearching, setIsSearching] = useState(false);
+
   return (
     <Formik
       initialValues={{
@@ -41,100 +42,111 @@ const FilterTrucks: React.FC = () => {
         }, 3000);
       }}
     >
-      {({ values, resetForm }) => (
-        <Form className={s.form}>
-          {/* Пошук локації */}
-          <label className={s.labelLocation}>
-            <svg className={s.iconMap} width="20" height="20" fill="currentColor">
-              <use href="/sprite.svg#icon-map" />
-            </svg>
-            Location
-            <Field
-              className={s.inputLocation}
-              name="location"
-              type="text"
-              placeholder="City"
-            />
-          </label>
-          <p className={s.pFilter}>Filter</p>
+      {({ resetForm, dirty }) => {        
 
-          {/* Особливості - чекбокси */}
-          <h3 className={s.title}>Vehicle equipment</h3>
-          <div className={s.equipmentContainer}>
-            {featureOptions.map((feature) => {
-              const { label, icon } = equipmentData[feature];
-              return (
-                <label className={s.labelEquipment} key={feature}>
-                  <Field
-                    className={s.inputEquipment}
-                    type="checkbox"
-                    name="features"
-                    value={feature}
-                  />
-                  <svg width="32" height="32" style={{ marginRight: 4 }}>
-                    <use href={`/sprite.svg#${icon}`} />
-                  </svg>
-                  {label}
-                </label>
-              );
-            })}
-          </div>
+        // Блокуємо кнопки, якщо форма порожня або не змінена
+        const isDisabled = !dirty;
 
-          {/* Радіо кнопки для форм */}
-          <h3 className={s.title}>Vehicle type</h3>
-          <div className={s.typeContainer}>
-            {formOptions.map((formKey) => {
-              const typeItem = typeData.find((t) => t.key === formKey);
-              const label = typeItem?.label || formKey;
-              const icon = typeItem?.icon || "";
-              return (
-                <label className={s.labelType} key={formKey}>
-                  <Field
-                    className={s.inputType}
-                    type="radio"
-                    name="form"
-                    value={formKey}
-                    style={{ marginRight: 4 }}
-                  />
-                  <svg width="32" height="32">
-                    <use href={`/sprite.svg#${icon}`} />
-                  </svg>
-                  {label}
-                </label>
-              );
-            })}
-          </div>
+        return (
+          <Form className={s.form}>
+            {/* Пошук локації */}
+            <label className={s.labelLocation}>
+              <svg className={s.iconMap} width="20" height="20" fill="currentColor">
+                <use href="/sprite.svg#icon-map" />
+              </svg>
+              Location
+              <Field
+                className={s.inputLocation}
+                name="location"
+                type="text"
+                placeholder="City"
+              />
+            </label>
+            <p className={s.pFilter}>Filter</p>
 
-          {/* Кнопки пошуку та скидання */}
-          <div className={s.buttonContainer}>          
-            <Button
-              type="button"
-              className="search"
-              onClick={() => {
-                resetForm();
-                dispatch(
-                  changeFilter({
-                    location: "",
-                    features: [],
-                    form: "",
-                  })
+            {/* Особливості - чекбокси */}
+            <h3 className={s.title}>Vehicle equipment</h3>
+            <div className={s.equipmentContainer}>
+              {featureOptions.map((feature) => {
+                const { label, icon } = equipmentData[feature];
+                return (
+                  <label className={s.labelEquipment} key={feature}>
+                    <Field
+                      className={s.inputEquipment}
+                      type="checkbox"
+                      name="features"
+                      value={feature}
+                    />
+                    <svg width="32" height="32" style={{ marginRight: 4 }}>
+                      <use href={`/sprite.svg#${icon}`} />
+                    </svg>
+                    {label}
+                  </label>
                 );
-                dispatch(resetVisibleCount());
-                setIsSearching(true);
-                setTimeout(() => {
-                setIsSearching(false);
-                }, 3000);
-              }}
-            >
-              Reset
-            </Button>
-            <Button type="submit" className="search">
-              Search
-            </Button>
-            {isSearching && <CubeLoader />}
-          </div>
-        </Form>
-      )}
+              })}
+            </div>
+
+            {/* Радіо кнопки для форм */}
+            <h3 className={s.title}>Vehicle type</h3>
+            <div className={s.typeContainer}>
+              {formOptions.map((formKey) => {
+                const typeItem = typeData.find((t) => t.key === formKey);
+                const label = typeItem?.label || formKey;
+                const icon = typeItem?.icon || "";
+                return (
+                  <label className={s.labelType} key={formKey}>
+                    <Field
+                      className={s.inputType}
+                      type="radio"
+                      name="form"
+                      value={formKey}
+                      style={{ marginRight: 4 }}
+                    />
+                    <svg width="32" height="32">
+                      <use href={`/sprite.svg#${icon}`} />
+                    </svg>
+                    {label}
+                  </label>
+                );
+              })}
+            </div>
+
+            {/* Кнопки пошуку та скидання */}
+            <div className={s.buttonContainer}>
+              <Button
+                type="button"
+                className="search"
+                disabled={isDisabled}
+                onClick={() => {
+                  resetForm();
+                  dispatch(
+                    changeFilter({
+                      location: "",
+                      features: [],
+                      form: "",
+                    })
+                  );
+                  dispatch(resetVisibleCount());
+                  setIsSearching(true);
+                  setTimeout(() => {
+                    setIsSearching(false);
+                  }, 3000);
+                }}
+              >
+                Reset
+              </Button>
+              <Button
+                type="submit"
+                className="search"
+                disabled={isDisabled}
+              >
+                Search
+              </Button>
+              {isSearching && <CubeLoader />}
+            </div>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };

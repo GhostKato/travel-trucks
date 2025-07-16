@@ -1,4 +1,4 @@
-# # Individual project: 🚐 travel trucks
+# Individual project: 🚐 travel trucks
 
 ### Description:
 

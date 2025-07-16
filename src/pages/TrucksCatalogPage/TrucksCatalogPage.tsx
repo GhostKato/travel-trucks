@@ -25,8 +25,8 @@ const TrucksCatalogPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className={s.container}>
+    <div className={s.container}>
+      <div className={s.truckContainer}>
         <FilterPanel />
         <TrucksList trucks={visibleTrucks} />
   

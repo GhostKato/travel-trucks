@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from "redux-persist/integration/react";           
 import App from './components/App/App.tsx';
-import 'modern-normalize';
+import 'modern-normalize/modern-normalize.css';
 import "./index.css";
 import "react-datepicker/dist/react-datepicker.css";
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch } from '../../redux/store';
+import type { AppDispatch, RootState } from '../../redux/store';
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { fetchTruckDetails } from "../../redux/trucks/operations";
 import clsx from "clsx";
@@ -8,6 +8,9 @@ import s from './TrucksDetailsPage.module.css';
 import { selectSelectedTruck } from "../../redux/trucks/selectors";
 import RatingLocation from "../../components/RatingLocation/RatingLocation";
 import TruckOrderForm from "../../components/TruckOrderForm/TruckOrderForm";
+import Button from '../../components/Button/Button';
+import { toggleFavourite } from '../../redux/favourites/slice';
+import { selectIsFavourite } from '../../redux/favourites/selectors';
 
 interface BuildLinkClassParams {
   isActive: boolean;
@@ -21,6 +24,7 @@ const TrucksDetailsPage: React.FC = () => {
   const { id } = useParams();
   const dispatch: AppDispatch = useDispatch();
   const truck = useSelector(selectSelectedTruck);
+  const isFavourite = useSelector((state: RootState) => selectIsFavourite(state, id));
 
   useEffect(() => {
     if (id) {
@@ -28,13 +32,28 @@ const TrucksDetailsPage: React.FC = () => {
     }
   }, [dispatch, id]);
 
+  const handleFavouritesClick = (id: string) => {
+      dispatch(toggleFavourite(id));
+    };
+
   return (
     <div className={s.container}>
       <h1 className={s.name}>{truck?.name}</h1>
 
       {truck && <RatingLocation truck={truck} />}
 
-      <h2 className={s.price}>{truck ? `€ ${truck.price.toFixed(2)}` : ""}</h2>
+      <div className={s.priceCont}>
+        <h3 className={s.price}>{truck ? `€ ${truck.price.toFixed(2)}` : ""}</h3>
+        <Button className="favourites" onClick={() => handleFavouritesClick(id)}>
+              <svg
+                className={clsx(s.heartIcon, isFavourite ? s.fav : s.notFav)}
+                width="25"
+                height="24"               
+              >
+                <use href="/sprite.svg#icon-heart" />
+              </svg>
+            </Button>
+      </div>
 
       <ul className={s.gallery}>
   {truck?.gallery?.map((imgObj, index) => (

@@ -17,12 +17,19 @@ const TrucksCatalogPage: React.FC = () => {
   const [isSearching, setIsSearching] = useState(false);
 
   const handleLoadMore = () => {
-    dispatch(incrementVisibleCount(6));
-    setIsSearching(true);
-    setTimeout(() => {
+  dispatch(incrementVisibleCount(6));
+  setIsSearching(true);
+
+  setTimeout(() => {
     setIsSearching(false);
-    }, 3000);
-  };
+
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+
+  }, 1000);
+};
 
   return (
     <div className={s.container}>

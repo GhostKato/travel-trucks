@@ -24,7 +24,10 @@ const TrucksDetailsPage: React.FC = () => {
   const { id } = useParams();
   const dispatch: AppDispatch = useDispatch();
   const truck = useSelector(selectSelectedTruck);
-  const isFavourite = useSelector((state: RootState) => selectIsFavourite(state, id));
+  
+  const isFavourite = useSelector((state: RootState) =>
+    id ? selectIsFavourite(state, id) : false
+  );
 
   useEffect(() => {
     if (id) {
@@ -32,9 +35,10 @@ const TrucksDetailsPage: React.FC = () => {
     }
   }, [dispatch, id]);
 
-  const handleFavouritesClick = (id: string) => {
-      dispatch(toggleFavourite(id));
-    };
+  const handleFavouritesClick = (id?: string) => {
+    if (!id) return;
+    dispatch(toggleFavourite(id));
+  };
 
   return (
     <div className={s.container}>
@@ -45,25 +49,25 @@ const TrucksDetailsPage: React.FC = () => {
       <div className={s.priceCont}>
         <h3 className={s.price}>{truck ? `€ ${truck.price.toFixed(2)}` : ""}</h3>
         <Button className="favourites" onClick={() => handleFavouritesClick(id)}>
-              <svg
-                className={clsx(s.heartIcon, isFavourite ? s.fav : s.notFav)}
-                width="25"
-                height="24"               
-              >
-                <use href="/sprite.svg#icon-heart" />
-              </svg>
-            </Button>
+          <svg
+            className={clsx(s.heartIcon, isFavourite ? s.fav : s.notFav)}
+            width="25"
+            height="24"               
+          >
+            <use href="/sprite.svg#icon-heart" />
+          </svg>
+        </Button>
       </div>
 
       <ul className={s.gallery}>
-  {truck?.gallery?.map((imgObj, index) => (
-    <li key={index} className={s.galleryItem}>
-      <img className={s.img} src={imgObj.original} alt={`Truck image ${index + 1}`} />
-    </li>
-  ))}
-</ul>
+        {truck?.gallery?.map((imgObj, index) => (
+          <li key={index} className={s.galleryItem}>
+            <img className={s.img} src={imgObj.original} alt={`Truck image ${index + 1}`} />
+          </li>
+        ))}
+      </ul>
       
-<p className={s.description}>{truck?.description}</p>
+      <p className={s.description}>{truck?.description}</p>
 
       <nav className={s.nav}>
         <NavLink to="features" className={buildLinkClass}>
@@ -74,10 +78,11 @@ const TrucksDetailsPage: React.FC = () => {
           Reviews
         </NavLink>
       </nav>      
-<div className={s.featuresReviewsForm}>
+
+      <div className={s.featuresReviewsForm}>
         <Outlet />
-        <TruckOrderForm/>
-</div>
+        <TruckOrderForm />
+      </div>
     </div>
   );
 };

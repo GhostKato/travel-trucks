@@ -24,9 +24,7 @@ export const selectFilteredTrucks = createSelector(
           ? truck.location.toLowerCase().includes(locationFilter.toLowerCase())
           : false;
   
-        const matchesForm = formFilter ? truck.form === formFilter : true;
-  
-    type TruckFeatureKey = "automatic" | "someOtherFeature" | "thirdFeature";
+        const matchesForm = formFilter ? truck.form === formFilter : true;     
 
     const matchesFeatures = featuresFilter.every((feature) => {
         if (feature === "automatic") {

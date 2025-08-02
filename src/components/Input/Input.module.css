@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .input {
@@ -46,4 +47,6 @@
 .error {
   height: 8px;
   color: var(--text-active);
+  position: absolute;
+  top: 57px;
 }

@@ -25,6 +25,17 @@ export type Truck = {
   tank: string;          
   consumption: string;
   transmission: string;
+
+  AC?: boolean;
+  TV?: boolean;
+  bathroom?: boolean;
+  kitchen?: boolean;
+  microwave?: boolean;
+  radio?: boolean;
+  refrigerator?: boolean;
+  water?: boolean;
+  gas?: boolean;
+  engine?: string;  
 };
 
 export type TrucksState = {

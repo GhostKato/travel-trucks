@@ -12,36 +12,35 @@ export const selectFeaturesFilter = (state: RootState): string[] =>
   state.filters.features;
 
 export const selectFilteredTrucks = createSelector(
-    [selectTrucks, selectLocationFilter, selectFormFilter, selectFeaturesFilter],
-    (
-      trucks: Truck[] = [],
-      locationFilter: string = "",
-      formFilter: string | null = null,
-      featuresFilter: string[] = []
-    ): Truck[] => {
-      return trucks.filter((truck) => {
-        const matchesLocation = truck.location
-          ? truck.location.toLowerCase().includes(locationFilter.toLowerCase())
-          : false;
-  
-        const matchesForm = formFilter ? truck.form === formFilter : true;     
+  [selectTrucks, selectLocationFilter, selectFormFilter, selectFeaturesFilter],
+  (
+    trucks: Truck[] = [],
+    locationFilter: string = "",
+    formFilter: string | null = null,
+    featuresFilter: string[] = []
+  ): Truck[] => {
+    return trucks.filter((truck) => {
+      const matchesLocation = truck.location
+        ? truck.location.toLowerCase().includes(locationFilter.toLowerCase())
+        : false;
 
-    const matchesFeatures = featuresFilter.every((feature) => {
+      const matchesForm = formFilter ? truck.form === formFilter : true;
+
+      const matchesFeatures = featuresFilter.every((feature) => {
         if (feature === "automatic") {
           return truck.transmission === "automatic";
         }
-        
-        const value = (truck as any)[feature];
-      
+
+        const value = (truck as Record<string, unknown>)[feature];
+
         if (typeof value === "boolean") {
           return value === true;
         }
-      
+
         return false;
       });
-  
-        return matchesLocation && matchesForm && matchesFeatures;
-      });
-    }
-  );
-  
+
+      return matchesLocation && matchesForm && matchesFeatures;
+    });
+  }
+);

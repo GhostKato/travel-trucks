@@ -41,47 +41,49 @@ const TrucksDetailsPage: React.FC = () => {
   };
 
   return (
-    <div className={s.container}>
-      <h1 className={s.name}>{truck?.name}</h1>
-
-      {truck && <RatingLocation truck={truck} />}
-
-      <div className={s.priceCont}>
-        <h3 className={s.price}>{truck ? `€ ${truck.price.toFixed(2)}` : ""}</h3>
-        <Button className="favourites" onClick={() => handleFavouritesClick(id)}>
-          <svg
-            className={clsx(s.heartIcon, isFavourite ? s.fav : s.notFav)}
-            width="25"
-            height="24"               
-          >
-            <use href="/sprite.svg#icon-heart" />
-          </svg>
-        </Button>
-      </div>
-
-      <ul className={s.gallery}>
-        {truck?.gallery?.map((imgObj, index) => (
-          <li key={index} className={s.galleryItem}>
-            <img className={s.img} src={imgObj.original} alt={`Truck image ${index + 1}`} />
-          </li>
-        ))}
-      </ul>
-      
-      <p className={s.description}>{truck?.description}</p>
-
-      <nav className={s.nav}>
-        <NavLink to="features" className={buildLinkClass}>
-          Features
-        </NavLink>
-
-        <NavLink to="reviews" className={buildLinkClass}>
-          Reviews
-        </NavLink>
-      </nav>      
-
-      <div className={s.featuresReviewsForm}>
-        <Outlet />
-        <TruckOrderForm />
+    <div className={s.wraper}>
+      <div className={s.container}>
+        <h1 className={s.name}>{truck?.name}</h1>
+  
+        {truck && <RatingLocation truck={truck} />}
+  
+        <div className={s.priceCont}>
+          <h3 className={s.price}>{truck ? `€ ${truck.price.toFixed(2)}` : ""}</h3>
+          <Button className="favourites" onClick={() => handleFavouritesClick(id)}>
+            <svg
+              className={clsx(s.heartIcon, isFavourite ? s.fav : s.notFav)}
+              width="25"
+              height="24"               
+            >
+              <use href="/sprite.svg#icon-heart" />
+            </svg>
+          </Button>
+        </div>
+  
+        <ul className={s.gallery}>
+          {truck?.gallery?.map((imgObj, index) => (
+            <li key={index} className={s.galleryItem}>
+              <img className={s.img} src={imgObj.original} alt={`Truck image ${index + 1}`} />
+            </li>
+          ))}
+        </ul>
+        
+        <p className={s.description}>{truck?.description}</p>
+  
+        <nav className={s.nav}>
+          <NavLink to="features" className={buildLinkClass}>
+            Features
+          </NavLink>
+  
+          <NavLink to="reviews" className={buildLinkClass}>
+            Reviews
+          </NavLink>
+        </nav>      
+  
+        <div className={s.featuresReviewsForm}>
+          <Outlet />
+          <TruckOrderForm />
+        </div>
       </div>
     </div>
   );

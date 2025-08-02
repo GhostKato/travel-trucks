@@ -17,7 +17,9 @@ const Input: React.FC<InputProps> = ({
   type = "text",
   as = "input",
 }) => {
-  const { setFieldValue, values } = useFormikContext<any>();
+  const { setFieldValue, values } = useFormikContext<unknown>();
+  
+  const value = (values as Record<string, unknown>)[name];
 
   return (
     <div className={s.container}>
@@ -34,7 +36,7 @@ const Input: React.FC<InputProps> = ({
       {as === "datepicker" && (
         <DatePicker
           id={name}
-          selected={values[name] ? new Date(values[name]) : null}
+          selected={value ? new Date(value as string | number) : null}
           onChange={(date) => setFieldValue(name, date)}
           className={s.input}
           dateFormat="yyyy-MM-dd"
@@ -52,10 +54,9 @@ const Input: React.FC<InputProps> = ({
         />
       )}
 
-        <ErrorMessage name={name}>          
-          {(msg) => <div className={s.error}>{msg}</div>}
-        </ErrorMessage>
-
+      <ErrorMessage name={name}>
+        {(msg) => <div className={s.error}>{msg}</div>}
+      </ErrorMessage>
     </div>
   );
 };

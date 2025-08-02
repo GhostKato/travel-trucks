@@ -29,6 +29,9 @@
   border: 1px solid var(--border);
   border-radius: 20px;
 }
+.wraper {
+  padding-bottom: 1px;
+}
 
 .name {
   font-size: 24px;
@@ -127,8 +130,8 @@
 
 @media (min-width: 1024px) {
   .container {
-    margin: 48px;
     padding: 48px 64px 80px 64px;
+    margin: 48px;
   }
 
   .img {
@@ -151,11 +154,6 @@
 }
 
 @media (min-width: 1440px) {
-  .container {
-    margin: 48px;
-    padding: 48px 64px 80px 64px;
-  }
-
   .gallery {
     flex-direction: row;
     gap: 48px;

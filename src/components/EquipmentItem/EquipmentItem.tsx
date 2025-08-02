@@ -11,11 +11,11 @@ const EquipmentItem: React.FC<EquipmentItemProps> = ({ truck }) => {
   return (
     <>
       {Object.entries(equipmentData).map(([key, { icon, label, type }]) => {
-       
-        const value = (truck as any)[key];
+        
+        const value = (truck as Record<string, unknown>)[key];
 
         if (type === 'boolean') {
-          if (!value) return null;
+          if (value !== true) return null;
           return (
             <li key={key} className={s.item}>
               <svg width="16" height="16" fill="currentColor">
@@ -27,13 +27,13 @@ const EquipmentItem: React.FC<EquipmentItemProps> = ({ truck }) => {
         }
 
         if (type === 'string') {
-          if (!value || value === '') return null;
+          if (typeof value !== 'string' || value === '') return null;
           return (
             <li key={key} className={s.item}>
               <svg width="16" height="16" fill="currentColor">
                 <use href={`/sprite.svg#${icon}`} />
               </svg>
-               {value}
+              {value}
             </li>
           );
         }

@@ -41,6 +41,7 @@ const Input: React.FC<InputProps> = ({
           className={s.input}
           dateFormat="yyyy-MM-dd"
           placeholderText={label}
+          autoFocus={false}
         />
       )}
 

@@ -5,6 +5,7 @@ import TrucksItem from '../TrucksItem/TrucksItem';
 import { selectIsLoading } from '../../redux/trucks/selectors';
 import type { Truck } from "../../types";
 import CubeLoader from '../CubeLoader/CubeLoader';
+import NoTrucksFound from '../NoTrucksFound/NoTrucksFound';
 
 type TrucksListProps = {
   trucks: Truck[];
@@ -18,7 +19,7 @@ const TrucksList: React.FC<TrucksListProps> = ({ trucks }) => {
   }
 
   if (!Array.isArray(trucks) || trucks.length === 0) {
-    return <div className={s.empty}>No trucks found.</div>;
+    return <NoTrucksFound/>;
   }
   
   return (

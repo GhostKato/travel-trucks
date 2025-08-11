@@ -35,7 +35,7 @@
 }
 
 @media (min-width: 768px) {
-  .logo {
+  .logoCont {
     position: absolute;
     left: 20px;
   }
@@ -50,7 +50,7 @@
 }
 
 @media (min-width: 1300px) {
-  .logo {
+  .logoCont {
     left: 64px;
   }
   .container {

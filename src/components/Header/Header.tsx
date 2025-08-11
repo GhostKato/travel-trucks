@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import s from './Header.module.css';
 import clsx from 'clsx';
 import { FaSearch } from "react-icons/fa";
@@ -21,7 +21,9 @@ const Header: React.FC = () => {
 
   return (
     <header className={s.header}>      
-      <img src="/logo.svg" alt="logo" className={s.logo} />
+      <Link className={s.logoCont} to="/">
+      <img src="/logo.svg" alt="logo" className={s.logo}/>
+      </Link>
       <div className={`${s.container} container`}>
         <NavLink className={buildLinkClass} to="/">Home</NavLink>
         <NavLink className={buildLinkClass} to="/catalog">Catalog</NavLink>

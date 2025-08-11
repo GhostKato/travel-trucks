@@ -15,6 +15,14 @@
 
   .truckContainer {
     display: flex;
+    justify-content: flex-start;
     gap: 30px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .truckContainer {
+    padding-right: 390px;
+    margin: 0 auto;
   }
 }

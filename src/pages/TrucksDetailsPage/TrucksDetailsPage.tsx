@@ -41,7 +41,7 @@ const TrucksDetailsPage: React.FC = () => {
   };
 
   return (
-    <div className={s.wraper}>
+    <div className={s.wrapper}>
       <div className={s.container}>
         <h1 className={s.name}>{truck?.name}</h1>
   

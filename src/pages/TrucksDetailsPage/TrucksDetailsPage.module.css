@@ -29,7 +29,7 @@
   border: 1px solid var(--border);
   border-radius: 20px;
 }
-.wraper {
+.wrapper {
   padding-bottom: 1px;
 }
 
@@ -162,5 +162,12 @@
   .img {
     width: 800px;
     height: 900px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .wrapper {
+    margin: 0 auto;
+    width: 2000px;
   }
 }

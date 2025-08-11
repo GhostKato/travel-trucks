@@ -26,6 +26,10 @@ body {
   height: 100vh;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 a {
   font-weight: 500;
   text-decoration: inherit;

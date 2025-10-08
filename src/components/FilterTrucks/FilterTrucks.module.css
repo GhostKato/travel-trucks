@@ -5,7 +5,7 @@
 .labelLocation {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 2px;
   color: var(--Gray, #6c717b);
   font-weight: 400;
   line-height: 24px;
@@ -14,7 +14,7 @@
 
 .iconMap {
   position: absolute;
-  bottom: 17px;
+  bottom: 10px;
   left: 20px;
 }
 
@@ -22,7 +22,7 @@
   border: none;
   border-radius: 12px;
   background-color: var(--background-light);
-  height: 56px;
+  height: 40px;
   padding-left: 48px;
   transition: outline 0.3s ease;
   &:hover {
@@ -37,15 +37,11 @@
 }
 
 .pFilter {
-  color: var(--Text, #475467);
-  font-weight: 500;
-  line-height: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  display: none;
 }
 
 .title {
-  padding-bottom: 15px;
+  padding-bottom: 6px;
   border-bottom: 1px solid #dadde1;
   color: var(--Main, #101828);
   font-size: 20px;
@@ -56,9 +52,9 @@
 .equipmentContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 6px;
-  padding-top: 24px;
-  padding-bottom: 12px;
+  gap: 3px 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   justify-content: center;
 }
 
@@ -67,9 +63,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   width: 100px;
-  height: 86px;
+  height: 70px;
   border: 1px solid #dadde1;
   border-radius: 12px;
   transition: border-color 0.3s ease;
@@ -89,9 +85,9 @@
 .typeContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 6px;
-  padding-top: 24px;
-  padding-bottom: 30px;
+  gap: 3px 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   justify-content: center;
 }
 
@@ -101,9 +97,9 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 8px;
+  gap: 5px;
   width: 100px;
-  height: 86px;
+  height: 90px;
   border: 1px solid #dadde1;
   border-radius: 12px;
   transition: border-color 0.3s ease;
@@ -123,6 +119,55 @@
 .buttonContainer {
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .labelLocation {
+    gap: 5px;
+  }
+
+  .iconMap {
+    bottom: 17px;
+  }
+
+  .inputLocation {
+    height: 56px;
+  }
+
+  .pFilter {
+    display: block;
+    color: var(--Text, #475467);
+    font-weight: 500;
+    line-height: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .title {
+    padding-bottom: 15px;
+  }
+
+  .equipmentContainer {
+    gap: 4px 6px;
+    padding-top: 24px;
+    padding-bottom: 12px;
+  }
+
+  .labelEquipment {
+    gap: 8px;
+    height: 100px;
+  }
+
+  .typeContainer {
+    gap: 4px 6px;
+    padding-top: 24px;
+    padding-bottom: 30px;
+  }
+
+  .labelType {
+    gap: 8px;
+    height: 100px;
+  }
 }
 
 @media (min-width: 1300px) {

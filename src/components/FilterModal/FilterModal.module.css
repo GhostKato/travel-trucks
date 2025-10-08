@@ -10,7 +10,7 @@
 .modalContent {
   background: white;
   border-radius: 12px;
-  height: 90%;
+  height: 540px;
   margin-top: 10px;
   position: relative;
   padding-top: 20px;
@@ -20,6 +20,9 @@
 }
 
 @media (min-width: 768px) {
+  .modalContent {
+    height: 800px;
+  }
   .modalOverlay {
     justify-content: flex-end;
     padding-right: 10px;
